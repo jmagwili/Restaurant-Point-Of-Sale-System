@@ -1,0 +1,19 @@
+{
+	"folders": [
+		{
+			"path": "../practice"
+		},
+		{
+			"path": "../my web"
+		},
+		{
+			"path": "../Calculator"
+		},
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "Project"
+	}
+}
