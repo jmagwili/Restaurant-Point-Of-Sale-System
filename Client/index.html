@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>POS</title>
     <link rel="stylesheet" href="./styles/home.css">
     <link rel="stylesheet" href="./styles/main.css">
 </head>
@@ -19,6 +19,8 @@
         </div>
     </header>
     <div class="parent">
+
+        <!--Side Menu Bar-->
         <div class="side-bar">
             <div class="section">Home</div>
             <div class="section">Inventory</div>
@@ -26,6 +28,7 @@
             <div class="section">User Access</div>
         </div>
 
+        <!--Center Navigation Bar-->
         <nav>
             <ul>
                 <li> <a href="#">Main</a></li>
@@ -34,7 +37,8 @@
                 <li><a href="#">Side</a></li>
             </ul>
         </nav>
-
+        
+        <!--Order Bar-->
         <div class="order">
             <h3>Current Order</h3>
             <table>
@@ -52,6 +56,8 @@
             <button onclick="window.alert('It works')">Payment</button>
         </div>
     </div>
+
+    <!--Products Container-->
     <div id="prod-list" class="prod-list"></div>
     <script src="./script/script.js"></script>
 </body>
