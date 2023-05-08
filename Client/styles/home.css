@@ -30,13 +30,15 @@ a{
 }
 
 .prod-list{
-    border: solid;
     width: 45%;
     height: 100vh;
     margin-left: 27%;
     margin-top: 75px;
     display: flex;
-    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-evenly;
+    align-content: flex-start;
 }
 
 .order{
@@ -81,5 +83,13 @@ h3{
     background-color: rgb(190, 186, 186);
     font-weight: bold;
     font-size: 15px;
+}
+
+.products{
+    width: 170px;
+    height: 200px;
+    border-radius: 10px;
+    background-color: whitesmoke;
+    margin: 10px;
 }
 
