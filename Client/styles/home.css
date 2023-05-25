@@ -1,7 +1,9 @@
 /*CSS Styles for Home Page only*/
-
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
 nav{
     background-color: whitesmoke;
+    font-family:'Anton', sans-serif;
+    font-size: 15px;
     width: 500px;
     height: 30px;
     border-radius: 20px;
