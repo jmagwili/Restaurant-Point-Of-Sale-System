@@ -13,7 +13,7 @@
         <div class="spacer">
             <div class="logo item"></div>
             <div class="search item">
-                <input type="text" placeholder="Search Products...">
+                <input type="text" placeholder="🔎Search Products...">
             </div>
             <div class="account item"></div>
         </div>
@@ -22,10 +22,11 @@
 
         <!--Side Menu Bar-->
         <div class="side-bar">
-            <div class="section">Home</div>
-            <div class="section">Inventory</div>
-            <div class="section">Sales</div>
-            <div class="section">User Access</div>
+            <div class="section"><ion-icon name="home-outline"></ion-icon></div>
+            <div class="section"><ion-icon name="file-tray-stacked-outline"></ion-icon></div>
+            <div class="section"><ion-icon name="bag-handle-outline"></ion-icon></div>
+            <div class="section"> <ion-icon name="person-circle-outline"></ion-icon></div>
+        
         </div>
 
         <!--Center Navigation Bar-->
@@ -53,14 +54,16 @@
                     <td></td>
                 </tr>
             </table>
-            <button onclick="window.alert('It works')">Payment</button>
+            <button onclick="showbox()">Payment</button>
         </div>
     </div>
-
+    <div class = "Pop-up"><input type="button" value=" "></div>
     <!--Products Container-->
     <div id="prod-list" class="prod-list"></div>
     <script src="./script/script.js"></script>
 
-    <!--wazzup-->
+    <!--linking Icons-->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
 </html>
