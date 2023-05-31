@@ -1,14 +1,14 @@
 /*CSS Styles for the entire website in general*/
 /*Font linking*/
-@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
 *{
     margin: 0;
     padding: 0;
-    background-color: rgb(237, 188, 171);
+    background-color:white;
 }
 
 header{
-    display: none;
+    display: flex;
     width: 100%;
     background-color: whitesmoke;
     height: 50px;
@@ -18,35 +18,37 @@ header{
 }
 
 .spacer{
-    width: 80%;
+    width: 100%;
     height: 100%;
-    margin: 0 10%;
+    border-bottom: 1px solid #ECEDED ;
 
-    background-color: rgb(46, 45, 45);
+    background-color:white;
     display: flex;
-    justify-content: space-between;
     align-items: center;
 }
 
 .item{
     height: 40px;
     width: 40px;
-    background-color: whitesmoke;
+    background-color: white;
 }
 
 .logo{
-    display: inline-block;
+    display: flex;
     height: 40px;
     width: 40px;
     border-radius: 50%;
     background-color: darkgray;
+    margin-left: 20px;
 }
 
 .search{
-    width: 500px;
+    width: 300px;
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-left: 130px;
+    height: 50px;
 }
 
 input{
@@ -56,6 +58,7 @@ input{
     margin: 10px;
     padding: 0 20px;
     border: none;
+    background-color: #ECF3F5;
 }
 
 .side-bar{
@@ -70,6 +73,7 @@ input{
     top:0;
     left: 0;
     padding-top: 120px;
+    border-right: 1px solid #ECEDED;
 }
 
 
@@ -88,14 +92,15 @@ input{
 }
 
 ion-icon {
-  font-size: 25px;
+  font-size: 30px;
   margin-left: 10px;
   margin-right: 10px;
   background-color: inherit;
   transition: 200ms;
 }
 ion-icon:hover{
-    color: rgb(255, 85, 0);
+    color:  rgb(83, 141, 83);
+    cursor: pointer;
 }
 
 
