@@ -1,8 +1,8 @@
 /*CSS Styles for Home Page only*/
-@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
 nav{
     background-color: #EAF0F0;
-    font-family:'Anton', sans-serif;
+    font-family:'Quicksand', sans-serif;
     font-size: 15px;
     width: 73%;
     height: 80px;
@@ -11,20 +11,24 @@ nav{
     align-items: center;
     position: fixed;
     top: 50px;
-    margin-left: 73px;
-    top: 70px;
+    left: 78px;
 }
 
 nav ul li{
-    display: inline-block;
+    display: flex;
     margin: 0 20px;
-    background-color: rgb(83, 141, 83);
-    border: solid;
-    width: 20%;
-    height: 35px;
-    text-align: center;
+    background-color: #d9d9d9;
+    width: 13%;
+    height: 45px;
+    list-style: none;
     border-radius: 7px;
+    align-items: center;
+    justify-content: center;
+}
 
+nav ul li:hover{
+    background-color: rgb(83, 141, 83);
+    cursor: pointer;
 }
 
 nav ul{
@@ -32,15 +36,15 @@ nav ul{
     width: 100%;
     display: flex;
     justify-content: space-around;
-
 }
-
 a{
     text-decoration: none;
     background-color: inherit;
     color: black;
 }
-
+nav ul li:hover a{
+color:white;
+}
 .prod-list{
     width: 60%;
     height: 100vh;
@@ -58,10 +62,16 @@ a{
     height: 100vh;
     width: 20%;
     position: fixed;
-    top:0;
+    top:50px;
     right: 0;
     background-color: whitesmoke;
     padding: 10px;
+    border-left: 1px solid #ECEDED;
+}
+.order h3{
+    font-family: 'Quicksand', sans-serif;
+    font-size: 25px;
+    margin-bottom: 20px;
 }
 
 table{
