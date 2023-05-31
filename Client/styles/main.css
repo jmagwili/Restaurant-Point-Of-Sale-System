@@ -16,6 +16,7 @@ header{
     border-bottom: solid 1px rgb(220, 215, 215);
     display: flex;
     align-items: center;
+    top: 0;
 }
 
 /* .spacer{
@@ -44,6 +45,7 @@ header{
     font-size: 35px;
     font-weight: 700;
     margin-left: 20px;
+    cursor: pointer;
 }
 
 .logo span:nth-child(1){
