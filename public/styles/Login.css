@@ -5,14 +5,16 @@
 }
 
 selection{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  width: 100%;
- background: url() no-repeat;
- background-position: center;
- background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    width: 100%;
+    /* background: url() no-repeat; */
+    /* temporarily changed bg to black for better visibility */
+    background-color: black;
+    background-position: center;
+    background-size: cover;
 
 }
 
@@ -61,7 +63,7 @@ input:valid ~ :label{
     outline: none;
     padding: 0 35px 0 5 px;
     /* temporarily changed color for better visibilty */
-    color: black; 
+    color: #FFFF; 
     
     
 }
