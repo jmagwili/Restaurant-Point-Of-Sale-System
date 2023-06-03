@@ -1,5 +1,6 @@
 const express = require('express')
 const menuRoute = require('./controllers/menu')
+const db = require('./database')
 const bodyParser = require('body-parser')
 const app = express()
 
