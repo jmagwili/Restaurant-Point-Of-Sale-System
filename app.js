@@ -13,7 +13,7 @@ app.use('/menu', menuRoute)
 app.listen(3000, () => console.log('listening at port 3000'))
 
 app.get('/',(req, res) => {
-    res.render('orders')
+    res.render('Login')
 })
 
 app.post('/', (req, res) => {
