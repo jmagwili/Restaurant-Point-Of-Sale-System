@@ -3,7 +3,7 @@ express = require('express')
 menuRoute = express.Router()
 
 menuRoute.get('/', (req, res) => {
-    res.send('hello')
+    res.render('index')
 })
 
 module.exports = menuRoute

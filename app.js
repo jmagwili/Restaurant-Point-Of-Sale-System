@@ -16,5 +16,5 @@ app.get('/',(req, res) => {
 })
 
 app.post('/', (req, res) => {
-    res.send('hi')
+    res.redirect('/menu')
 })
