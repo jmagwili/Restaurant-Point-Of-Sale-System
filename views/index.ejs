@@ -9,25 +9,10 @@
     <link rel="stylesheet" href="/styles/main.css">
 </head>
 <body>
-    <header>
-        <div class="spacer">
-            <div class="logo item"></div>
-            <div class="search item">
-                <input type="text" placeholder="Search Products...">
-            </div>
-            <div class="account item"></div>
-        </div>
-    </header>
+    <%- include("./partials/header") %>
     <div class="parent">
 
-        <!--Side Menu Bar-->
-        <div class="side-bar">
-            <div class="section"><ion-icon name="grid-outline"></ion-icon></div>
-            <div class="section"><ion-icon name="file-tray-stacked-outline"></ion-icon></div>
-            <div class="section"><ion-icon name="bag-handle-outline"></ion-icon></div>
-            <div class="section"> <ion-icon name="person-circle-outline"></ion-icon></div>
-        
-        </div>
+        <%- include("./partials/sidebar") %>
 
         <!--Center Navigation Bar-->
         <nav>
@@ -60,7 +45,7 @@
     <div class = "Pop-up"><input type="button" value=" "></div>
     <!--Products Container-->
     <div id="prod-list" class="prod-list"></div>
-    <script src="./script/script.js"></script>
+    <script src="/script/script.js"></script>
 
     <!--linking Icons-->
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
