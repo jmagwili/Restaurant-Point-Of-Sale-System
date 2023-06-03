@@ -60,7 +60,9 @@ input:valid ~ :label{
     font-size: 1em;
     outline: none;
     padding: 0 35px 0 5 px;
-    color: #fff;
+    /* temporarily changed color for better visibilty */
+    color: black; 
+    
     
 }
 .inputbox ion-icon{
