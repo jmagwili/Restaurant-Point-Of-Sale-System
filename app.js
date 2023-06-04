@@ -1,5 +1,6 @@
 const express = require('express')
 const menuRoute = require('./controllers/menu')
+const orderRoute = require('./controllers/orders')
 const db = require('./database')
 const bodyParser = require('body-parser')
 const app = express()
@@ -9,6 +10,7 @@ app.use(express.static('public'))
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(bodyParser.json())
 app.use('/menu', menuRoute)
+app.use('/orders', orderRoute)
 
 app.listen(3000, () => console.log('listening at port 3000'))
 
