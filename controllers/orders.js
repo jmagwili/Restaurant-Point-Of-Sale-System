@@ -3,7 +3,7 @@ const db = require('../database')
 const orderRoute = express.Router()
 
 orderRoute.get('/', (req, res) => {
-    res.render('orders')
+    res.render('orders',{username: req.session.username})
 })
 
 module.exports = orderRoute
