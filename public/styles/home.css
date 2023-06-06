@@ -115,6 +115,7 @@ h3{
     background-color: #D8E6E9;
     margin: 10px;
     text-align: center;
+    position: relative;
 }
 
 .products img{
@@ -123,7 +124,7 @@ h3{
     height: 70%;
     width: 100%;
     border-radius: 15px 15px 0 0;
-    transition: 200ms;
+    transition: 300ms;
 }
 
 .products p{
@@ -134,6 +135,28 @@ h3{
     width: 80%;
 }
 
+.products button{
+    height: 47px;
+    width: 94px;
+    position: absolute;
+    top: 90px;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+    border-radius: 7px;
+    border: none;
+    background-color: #D89F65;
+    font-size: 20px;
+    cursor: pointer;
+    transition: 300ms;
+    opacity: 0;
+}
+
 .products:hover img{
-    filter: brightness(50%) hue-rotate(10deg);
+    filter: brightness(40%) hue-rotate(10deg);
+}
+
+.products:hover button{
+    top: 50px;
+    opacity: 100%;
 }
