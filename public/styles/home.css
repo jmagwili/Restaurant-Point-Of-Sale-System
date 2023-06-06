@@ -110,7 +110,7 @@ h3{
 .products{
     width: 203px;
     height: 214px;
-    border-radius: 10px;
+    border-radius: 15px;
     background-color: #D8E6E9;
     margin: 10px;
     text-align: center;
@@ -121,9 +121,13 @@ h3{
     overflow: hidden;
     height: 70%;
     width: 100%;
-    border-radius: 5px 5px 0 0;
+    border-radius: 15px 15px 0 0;
 }
 
 .products p{
     background-color: inherit;
+    font-size: 17px;
+    margin: 5px auto;
+    display: inline-block;
+    width: 80%;
 }
