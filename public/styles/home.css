@@ -12,6 +12,7 @@ nav{
     position: fixed;
     top: 50px;
     left: 78px;
+    z-index: 10;
 }
 
 nav ul li{
@@ -122,6 +123,7 @@ h3{
     height: 70%;
     width: 100%;
     border-radius: 15px 15px 0 0;
+    transition: 200ms;
 }
 
 .products p{
@@ -130,4 +132,8 @@ h3{
     margin: 5px auto;
     display: inline-block;
     width: 80%;
+}
+
+.products:hover img{
+    filter: brightness(50%) hue-rotate(10deg);
 }

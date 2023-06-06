@@ -47,7 +47,7 @@
         <% menu.forEach((item) => { %> 
             <div class="products">
                 <img src="/images/p.jpg" alt="">
-                <p><%= JSON.stringify(item.prod_name).toUpperCase() %></p>
+                <p><%= JSON.stringify(item.prod_name).toUpperCase().replace(/["]/g, '') %></p>
             </div> 
         <% }); %>
     </div>
