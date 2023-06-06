@@ -45,7 +45,10 @@
     <!--Products Container-->
     <div id="prod-list" class="prod-list">
         <% menu.forEach((item) => { %> 
-            <div class="products"><%= JSON.stringify(item.prod_name) %></div> 
+            <div class="products">
+                <img src="/images/p.jpg" alt="">
+                <p><%= JSON.stringify(item.prod_name) %></p>
+            </div> 
         <% }); %>
     </div>
     <!-- <script src="/script/script.js"></script> -->

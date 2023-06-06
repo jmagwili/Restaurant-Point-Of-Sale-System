@@ -49,7 +49,7 @@ color:white;
     width: 60%;
     height: 100vh;
     margin-left: 10%;
-    margin-top: 60px;
+    margin-top: 150px;
     display: flex;
     flex-wrap: wrap;
     align-items: flex-start;
@@ -108,10 +108,22 @@ h3{
 }
 
 .products{
-    width: 170px;
-    height: 200px;
+    width: 203px;
+    height: 214px;
     border-radius: 10px;
-    background-color: whitesmoke;
+    background-color: #D8E6E9;
     margin: 10px;
+    text-align: center;
 }
 
+.products img{
+    object-fit: fill;
+    overflow: hidden;
+    height: 70%;
+    width: 100%;
+    border-radius: 5px 5px 0 0;
+}
+
+.products p{
+    background-color: inherit;
+}
