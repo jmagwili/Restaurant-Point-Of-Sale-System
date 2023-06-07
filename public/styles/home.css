@@ -119,8 +119,6 @@ h3{
 }
 
 .products img{
-    object-fit: fill;
-    overflow: hidden;
     height: 70%;
     width: 100%;
     border-radius: 15px 15px 0 0;

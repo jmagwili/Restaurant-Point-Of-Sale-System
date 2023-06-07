@@ -48,7 +48,7 @@
             <div class="products">
                 <img src="/images/p.jpg" alt="">
                 <p><%= JSON.stringify(item.prod_name).toUpperCase().replace(/["]/g, '') %></p>
-                <button>ADD</button>
+                <button onclick="addToOrder(<%= JSON.stringify(item.prod_name) %>)">ADD</button>
             </div> 
         <% }); %>
     </div>
@@ -57,5 +57,10 @@
     <!--linking Icons-->
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script>
+        function addToOrder(name){
+            console.log(name)
+        }
+    </script>
 </body>
 </html>
