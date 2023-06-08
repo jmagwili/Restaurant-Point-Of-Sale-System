@@ -33,7 +33,7 @@ module.exports.checkAuthentication = (req, res, next) => {
 }
 
 //routes
-app.use('/menu', this.checkAuthentication, menuRoute)
+app.use('/menu', menuRoute)
 app.use('/orders', this.checkAuthentication, orderRoute)
 
 app.get('/',(req, res) => {
@@ -42,7 +42,8 @@ app.get('/',(req, res) => {
 })
 
 app.post('/', async (req, res) => {
-    const access = db.query('SELECT * FROM users WHERE user_id = ? AND user_password = ?', [req.body.email,req.body.password],(err, results) => {  
+    const query = 'SELECT * FROM users WHERE user_id = ? AND user_password = ?'
+    const access = db.query(query, [req.body.email,req.body.password],(err, results) => {  
         if(results.length === 1){
             req.session.isAuthenticated = true
             req.session.username = req.body.email

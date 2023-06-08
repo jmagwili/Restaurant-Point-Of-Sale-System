@@ -23,28 +23,70 @@
         <!--Order Bar-->
         <div class="order">
             <h3>CURRENT ORDER</h3>
-            <table>
-                <tr>
-                    <th>Qty.</th>
-                    <th>Item</th>
-                    <th>Amount</th>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            </table>
-            <button onclick="showbox()">Payment</button>
+            <div class="order-child"></div>
+            <button onclick="placeOrder()">Payment</button>
         </div>
     </div>
     <div class = "Pop-up"><input type="button" value=" "></div>
     <!--Products Container-->
-    <div id="prod-list" class="prod-list"></div>
-    <script src="/script/script.js"></script>
+    <div id="prod-list" class="prod-list">
+        <% menu.forEach((item) => { %> 
+            <div class="products">
+                <img src="/images/p.jpg" alt="">
+                <p><%= JSON.stringify(item.prod_name).toUpperCase().replace(/["]/g, '') %></p>
+                
+                <button onclick="addToOrder(<%= JSON.stringify(item.prod_name) %>)">ADD</button>
+            </div> 
+        <% }); %>
+    </div>
+    <!-- <script src="/script/script.js"></script> -->
 
     <!--linking Icons-->
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script>
+        let order = [];
+        const orderBox = document.querySelector('.order-child')
+
+        function addToOrder(name){
+            let custOrder = {
+                name: name,
+                qty: 1,
+                size: 's'
+            };
+            order.push(custOrder);
+            createCList(name);
+            console.log("added " + JSON.stringify(custOrder));
+        }
+
+        function createCList(name, img = '/images/p.jpg'){
+            const orderList = document.createElement('div');
+            orderList.classList.add('order-list');
+            orderBox.appendChild(orderList);
+
+            const orderImg = document.createElement('img');
+            orderImg.src = img;
+            orderImg.classList.add('order-img');
+            orderList.appendChild(orderImg);
+
+            const orderLabel = document.createElement('span');
+            orderLabel.innerHTML = name;
+            orderLabel.classList.add('order-label');
+            orderList.appendChild(orderLabel);
+        }
+
+        function placeOrder(){
+            console.log(order);
+            order = [];
+            resetOrder();
+        }
+
+        function resetOrder(){        
+            let orderLength = orderBox.children.length;
+            for(let i = 1; i <= orderLength; i++){
+                orderBox.removeChild(orderBox.childNodes[0]);
+            }
+        }
+    </script>
 </body>
 </html>

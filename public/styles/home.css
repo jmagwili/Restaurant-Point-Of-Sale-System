@@ -3,15 +3,16 @@
 nav{
     background-color: #EAF0F0;
     font-family:'Quicksand', sans-serif;
-    font-size: 15px;
+    font-size: 1vw;
     width: 73%;
     height: 80px;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
     position: fixed;
-    top: 50px;
+    top: 70px;
     left: 78px;
+    z-index: 10;
 }
 
 nav ul li{
@@ -49,13 +50,12 @@ color:white;
     width: 60%;
     height: 100vh;
     margin-left: 10%;
-    margin-top: 60px;
+    margin-top: 170px;
     display: flex;
-    flex-wrap: wrap;
     align-items: flex-start;
+    flex-wrap: wrap;
     justify-content: space-evenly;
     align-content: flex-start;
-    
 }
 
 .order{
@@ -64,36 +64,47 @@ color:white;
     position: fixed;
     top:50px;
     right: 0;
-    background-color: whitesmoke;
+    background-color: #FFF;
+    border-left: solid gray;
     padding: 10px;
-    border-left: 1px solid #ECEDED;
+    border-left: solid 1px rgb(220, 215, 215);
 }
 .order h3{
     font-family: 'Quicksand', sans-serif;
-    font-size: 25px;
-    margin-bottom: 20px;
-}
-
-table{
-    width: 100%;
-    min-height: 200px;
-    background-color: black;
-    
-}
-
-table th{
-    height: 20px;
-    background-color: white;
-}
-
-table td{
-    background-color: whitesmoke;
-}
-
-h3{
-    margin: 15px 0;
-    background-color: whitesmoke;
+    font-weight: 600;
     text-align: center;
+    font-size: 25px;
+    margin: 40px 0 0 0;
+    padding-bottom: 30px;
+    border-bottom: 2px dotted #A9A9A9;
+}
+
+.order-list{
+    position: relative;
+    background-color: #EAF0F0;
+    width: 90%;
+    height: 70px;
+    border-radius: 14px;
+    margin: 10px auto;
+}
+
+.order-img{
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    height: 50px;
+    width: 50px;
+    border-radius: 5px;
+}
+
+.order-label{
+    font-family: 'Quicksand';
+    position: absolute;
+    left: 70px;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: inherit;
 }
 
 .order button{
@@ -108,10 +119,59 @@ h3{
 }
 
 .products{
-    width: 170px;
-    height: 200px;
-    border-radius: 10px;
-    background-color: whitesmoke;
+    width: 203px;
+    height: 214px;
+    border-radius: 15px;
+    background-color: #D8E6E9;
     margin: 10px;
+    text-align: center;
+    position: relative;
 }
 
+.products img{
+    height: 70%;
+    width: 100%;
+    border-radius: 15px 15px 0 0;
+    transition: 300ms;
+}
+
+.products p{
+    font-family: 'Quicksand';
+    background-color: inherit;
+    font-size: 17px;
+    margin: 5px auto;
+    display: inline-block;
+    width: 80%;
+}
+
+.order-child{
+    height: 40vh;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+.products button{
+    height: 47px;
+    width: 94px;
+    position: absolute;
+    top: 90px;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+    border-radius: 7px;
+    border: none;
+    background-color: #D89F65;
+    font-size: 20px;
+    cursor: pointer;
+    transition: 300ms;
+    opacity: 0;
+}
+
+.products:hover img{
+    filter: brightness(40%) hue-rotate(10deg);
+}
+
+.products:hover button{
+    top: 50px;
+    opacity: 100%;
+}
