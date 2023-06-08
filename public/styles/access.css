@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    background-color:white;
+    font-family: 'Quicksand';
+}
+
+header{
+    display: flex;
+    width: 100%;
+    background-color: #FFFFFF;
+    position: fixed;
+    z-index: 3;
+    border-bottom: solid 1px rgb(220, 215, 215);
+    display: flex;
+    align-items: center;
+    top: 0;
+}
+.spacer{
+    width: 100%;
+    height: 100%;
+    border-bottom: 1px solid #ECEDED ;
+
+    background-color:white;
+    display: flex;
+    align-items: center;
+} 
+.logo{
+    display: flex;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    background-color: darkgray;
+    margin-left: 20px;
+    cursor: pointer;
+}
+
+.search{
+    width: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 130px;
+    height: 50px;
+}
+input{
+    height: 45px;
+    width: 357px;
+    left: 198px;
+    top: 0px;
+    border-radius: 0px;
+    border-radius: 10px;
+    margin-left: 100px;
+    padding: 0 20px;
+    border: none;
+    background-color: #ECF3F5;
+}
+
+.side-bar{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px 5px;
+    background-color: #FFFFFF;
+    height: 100vh;
+    width: 5%;
+    position: fixed;
+    top:0;
+    left: 0;
+    padding-top: 120px;
+    border-right: 1px solid #ECEDED;
+}
+
+
+.section{
+    display: flex;
+    font-family:'Anton', sans-serif;
+    font-size: 15px;
+    height: 30px;
+    width: 80%;
+    margin: 10px;
+    text-align: center;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: #FFFFFF;
+   
+}
+
+ion-icon {
+  font-size: 30px;
+  margin-left: 10px;
+  margin-right: 10px;
+  background-color: inherit;
+  transition: 200ms;
+}
+ion-icon:hover{
+    color:  rgb(83, 141, 83);
+    cursor: pointer;
+}
+
+.accessbox{
+    display: flex;
+    align-items: center;
+}
