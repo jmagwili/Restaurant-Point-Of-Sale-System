@@ -22,22 +22,11 @@
         
         <!--Order Bar-->
         <div class="order">
-            <h3>CURRENT ORDER</h3>
-            <table>
-                <tr>
-                    <th>Qty.</th>
-                    <th>Item</th>
-                    <th>Amount</th>
-                </tr>
-                <tr>
-                    <!-- <% menu.forEach((item) => { %> 
-                        <td><%= JSON.stringify(item.prod_id) %></td> 
-                    <% }); %> -->
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            </table>
+            <div class="order-child">
+                <h3>CURRENT ORDER</h3>
+                
+                
+            </div>
             <button onclick="placeOrder()">Payment</button>
         </div>
     </div>
@@ -60,6 +49,7 @@
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <script>
         let order = [];
+        const orderBox = document.querySelector('.order-child')
 
         function addToOrder(name){
             let custOrder = {
@@ -68,7 +58,19 @@
                 size: 's'
             };
             order.push(custOrder);
-            console.log("added " + JSON.stringify(custOrder))
+            createCList(name);
+            console.log("added " + JSON.stringify(custOrder));
+        }
+
+        function createCList(name, img = '/images/p.jpg'){
+            const orderList = document.createElement('div');
+            orderList.classList.add('order-list');
+            orderBox.appendChild(orderList);
+
+            const orderImg = document.createElement('img');
+            orderImg.src = img;
+            orderImg.classList.add('order-img');
+            orderList.appendChild(orderImg);
         }
 
         function placeOrder(){
