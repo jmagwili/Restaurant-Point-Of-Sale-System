@@ -78,6 +78,14 @@
         function placeOrder(){
             console.log(order);
             order = [];
+            resetOrder();
+        }
+
+        function resetOrder(){        
+            let orderLength = orderBox.children.length;
+            for(let i = 1; i <= orderLength; i++){
+                orderBox.removeChild(orderBox.childNodes[0]);
+            }
         }
     </script>
 </body>
