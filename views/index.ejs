@@ -38,7 +38,7 @@
                     <td></td>
                 </tr>
             </table>
-            <button onclick="showbox()">Payment</button>
+            <button onclick="placeOrder()">Payment</button>
         </div>
     </div>
     <div class = "Pop-up"><input type="button" value=" "></div>
@@ -48,6 +48,7 @@
             <div class="products">
                 <img src="/images/p.jpg" alt="">
                 <p><%= JSON.stringify(item.prod_name).toUpperCase().replace(/["]/g, '') %></p>
+                
                 <button onclick="addToOrder(<%= JSON.stringify(item.prod_name) %>)">ADD</button>
             </div> 
         <% }); %>
@@ -58,8 +59,21 @@
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <script>
+        let order = [];
+
         function addToOrder(name){
-            console.log(name)
+            let custOrder = {
+                name: name,
+                qty: 1,
+                size: 's'
+            };
+            order.push(custOrder);
+            console.log("added " + JSON.stringify(custOrder))
+        }
+
+        function placeOrder(){
+            console.log(order);
+            order = [];
         }
     </script>
 </body>
