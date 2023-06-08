@@ -1,5 +1,9 @@
 /*CSS Styles for Home Page only*/
 @import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
+*{
+    font-family:'Quicksand', sans-serif;  
+}
+
 nav{
     background-color: #EAF0F0;
     font-family:'Quicksand', sans-serif;
@@ -82,10 +86,16 @@ color:white;
 .order-list{
     position: relative;
     background-color: #EAF0F0;
-    width: 90%;
+    width: 100%;
     height: 70px;
     border-radius: 14px;
     margin: 10px auto;
+}
+
+.order-child{
+    height: 40vh;
+    overflow: hidden;
+    overflow-y: scroll;
 }
 
 .order-img{
@@ -144,12 +154,6 @@ color:white;
     width: 80%;
 }
 
-.order-child{
-    height: 40vh;
-    overflow: hidden;
-    overflow-y: scroll;
-}
-
 .products button{
     height: 47px;
     width: 94px;
@@ -174,4 +178,27 @@ color:white;
 .products:hover button{
     top: 50px;
     opacity: 100%;
+}
+
+.payment-breakdown{
+    width: 100%;
+    height: 25vh;
+    border: dashed 2px #A9A9A9;
+    margin-top: 20px;
+}
+
+.payment-breakdown table{
+    border-collapse: collapse;
+    border-bottom: 2px dotted #A9A9A9;
+}
+
+.payment-breakdown table tr,
+.payment-breakdown table th{
+    padding: 8px;
+    font-size: 1vw;
+}
+
+.payment-breakdown table th{
+    text-align: left;
+    width: 200px;
 }

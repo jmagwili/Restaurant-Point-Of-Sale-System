@@ -24,7 +24,20 @@
         <div class="order">
             <h3>CURRENT ORDER</h3>
             <div class="order-child"></div>
-            <button onclick="placeOrder()">Payment</button>
+            <div class="payment-breakdown">
+                <table>
+                    <tr>
+                        <th>SUBTOTAL</th>
+                        <td id="subtotal">₱ 0.00</td>
+                    </tr>
+                    <tr>
+                        <th>SERVICE CHARGE</th>
+                        <td id="sc">₱ 0.00</td>
+                    </tr>
+                </table>
+                <!-- <button>CANCEL</button>
+                <button>PLACE ORDER</button> -->
+            </div>
         </div>
     </div>
     <div class = "Pop-up"><input type="button" value=" "></div>
@@ -52,11 +65,14 @@
             let custOrder = {
                 name: name,
                 qty: 1,
-                size: 's'
+                size: 's',
+                amt: 100
             };
             order.push(custOrder);
             createCList(name);
+            computeTotal();
             console.log("added " + JSON.stringify(custOrder));
+
         }
 
         function createCList(name, img = '/images/p.jpg'){
@@ -86,6 +102,19 @@
             for(let i = 1; i <= orderLength; i++){
                 orderBox.removeChild(orderBox.childNodes[0]);
             }
+        }
+
+        function computeTotal(){
+            let subtotal = 0;
+            let sc = 0.0;
+            for(let i = 0; i < orderBox.children.length; i++){
+                subtotal += order[i].amt;
+            }
+
+            sc = subtotal * 0.1;
+            
+            document.getElementById('subtotal').innerHTML = '₱ ' + subtotal;
+            document.getElementById('sc').innerHTML = '₱ ' + sc; 
         }
     </script>
 </body>
