@@ -22,11 +22,8 @@
         
         <!--Order Bar-->
         <div class="order">
-            <div class="order-child">
-                <h3>CURRENT ORDER</h3>
-                
-                
-            </div>
+            <h3>CURRENT ORDER</h3>
+            <div class="order-child"></div>
             <button onclick="placeOrder()">Payment</button>
         </div>
     </div>
@@ -71,6 +68,11 @@
             orderImg.src = img;
             orderImg.classList.add('order-img');
             orderList.appendChild(orderImg);
+
+            const orderLabel = document.createElement('span');
+            orderLabel.innerHTML = name;
+            orderLabel.classList.add('order-label');
+            orderList.appendChild(orderLabel);
         }
 
         function placeOrder(){

@@ -71,15 +71,12 @@ color:white;
 }
 .order h3{
     font-family: 'Quicksand', sans-serif;
+    font-weight: 600;
+    text-align: center;
     font-size: 25px;
     margin: 40px 0 0 0;
     padding-bottom: 30px;
     border-bottom: 2px dotted #A9A9A9;
-}
-
-h3{
-    margin: 15px 0;
-    text-align: center;
 }
 
 .order-list{
@@ -99,6 +96,15 @@ h3{
     height: 50px;
     width: 50px;
     border-radius: 5px;
+}
+
+.order-label{
+    font-family: 'Quicksand';
+    position: absolute;
+    left: 70px;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: inherit;
 }
 
 .order button{
@@ -130,11 +136,18 @@ h3{
 }
 
 .products p{
+    font-family: 'Quicksand';
     background-color: inherit;
     font-size: 17px;
     margin: 5px auto;
     display: inline-block;
     width: 80%;
+}
+
+.order-child{
+    height: 40vh;
+    overflow: hidden;
+    overflow-y: scroll;
 }
 
 .products button{
