@@ -117,17 +117,6 @@ color:white;
     background-color: inherit;
 }
 
-.order button{
-    margin: 30px;
-    width: 70%;
-    height: 30px;
-    border: none;
-    border-radius: 10px;
-    background-color: rgb(190, 186, 186);
-    font-weight: bold;
-    font-size: 15px;
-}
-
 .products{
     width: 203px;
     height: 214px;
@@ -182,14 +171,15 @@ color:white;
 
 .payment-breakdown{
     width: 100%;
-    height: 25vh;
+    height: 30vh;
     border: dashed 2px #A9A9A9;
     margin-top: 20px;
+    text-align: center;
 }
 
 .payment-breakdown table{
     border-collapse: collapse;
-    border-bottom: 2px dotted #A9A9A9;
+    /* border-bottom: 2px dotted #A9A9A9; */
 }
 
 .payment-breakdown table tr,
@@ -201,4 +191,39 @@ color:white;
 .payment-breakdown table th{
     text-align: left;
     width: 200px;
+}
+
+.breakdown{
+    display: flex;
+    justify-content: space-between;
+    border-top: dotted 2px #A9A9A9;
+}
+
+.payment-breakdown h4{
+    font-size: 20px;
+    font-weight: 600;
+    padding: 10px;
+}
+
+.total{
+    padding-right: 5px;
+}
+
+.payment-breakdown button{
+    height: 50px;
+    border-radius: 15px;
+    width: 110px;
+    margin: 5px;
+    cursor: pointer;
+    border: none;
+    font-weight: 600;
+    font-size: 13px;
+}
+
+.cancel-btn{
+    background-color: #EC5A5A;
+}
+
+.place-order-btn{
+    background-color: #B1CED4;
 }

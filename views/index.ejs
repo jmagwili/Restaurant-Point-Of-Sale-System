@@ -35,8 +35,13 @@
                         <td id="sc">₱ 0.00</td>
                     </tr>
                 </table>
-                <!-- <button>CANCEL</button>
-                <button>PLACE ORDER</button> -->
+                <div class="breakdown">
+                    <h4>TOTAL:</h4>
+                    <h4 id="total">₱ 0.00</h4>
+                </div>
+                
+                <button class="cancel-btn">CANCEL</button>
+                <button class="place-order-btn">PLACE ORDER</button>
             </div>
         </div>
     </div>
@@ -107,14 +112,18 @@
         function computeTotal(){
             let subtotal = 0;
             let sc = 0.0;
+            let total = 0;
+
             for(let i = 0; i < orderBox.children.length; i++){
                 subtotal += order[i].amt;
             }
 
             sc = subtotal * 0.1;
-            
+            total = subtotal + sc;
             document.getElementById('subtotal').innerHTML = '₱ ' + subtotal;
-            document.getElementById('sc').innerHTML = '₱ ' + sc; 
+            document.getElementById('sc').innerHTML = '₱ ' + sc;
+            document.getElementById('total').innerHTML = '₱ ' + total;
+            console.log(total)
         }
     </script>
 </body>
