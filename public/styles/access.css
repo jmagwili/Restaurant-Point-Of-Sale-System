@@ -99,7 +99,50 @@ ion-icon:hover{
     cursor: pointer;
 }
 
-.accessbox{
+table,  tr, th, td{
+   border: 1px solid black;
+   justify-content: center;
+}
+
+.topbox{
+    margin-top: 8%;
+    width: 80%;
+    height: 60vh;
+    margin-left: 150px;
+}
+.topbox input{
+    height: 14px;
+    width: 14px;
+    margin-right: 45%;
+}
+
+.parent {
     display: flex;
-    align-items: center;
+    position: relative;
+
+}
+.topbox td{
+ text-align: center;
+}
+
+.container-header{
+    display: flex;
+    z-index: 1000;
+    justify-content: space-around;
+    position: relative;
+    width: 100%;
+    top: 100px;
+    background-color: inherit;
+}
+
+button{
+    height: 40px;
+    width: 80%;
+    border-radius: 10px;
+    border: none;
+    font-size: 1em;
+    margin-left: 5px;
+    margin-bottom: 5px;
+    cursor: pointer;
+    background-color: rgb(224, 223, 223);
 }
