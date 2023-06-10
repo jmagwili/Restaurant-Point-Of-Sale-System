@@ -98,12 +98,6 @@ ion-icon:hover{
     color:  rgb(83, 141, 83);
     cursor: pointer;
 }
-
-table,  tr, th, td{
-   border: 1px solid black;
-   justify-content: center;
-}
-
 .topbox{
     margin-top: 8%;
     width: 80%;
@@ -123,6 +117,11 @@ table,  tr, th, td{
 }
 .topbox td{
  text-align: center;
+ background-color: rgb(219, 218, 218);
+}
+
+.topbox th{
+    background-color: rgb(173, 173, 245);
 }
 
 .container-header{
@@ -146,3 +145,4 @@ button{
     cursor: pointer;
     background-color: rgb(224, 223, 223);
 }
+
