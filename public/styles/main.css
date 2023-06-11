@@ -13,7 +13,7 @@ header{
     height: 70px;
     background-color: #FFFFFF;
     position: fixed;
-    z-index: 3;
+    z-index: 1001;
     border-bottom: solid 1px rgb(220, 215, 215);
     display: flex;
     align-items: center;
@@ -81,16 +81,17 @@ input{
     left: 0;
     padding-top: 120px;
     border-right: 1px solid #ECEDED;
+    z-index: 1000;
 }
 
 
 .section{
-    display: flex;
+    /* display: flex; */
     font-family:'Anton', sans-serif;
     font-size: 15px;
-    height: 30px;
-    width: 80%;
-    margin: 10px;
+    /* height: 30px;
+    width: 80%; */
+    margin: 10px 0;
     text-align: center;
     border-radius: 10px;
     padding: 10px;
