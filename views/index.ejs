@@ -54,7 +54,15 @@
         <div class="close-btn">×</div>
             <div class="custom-model-wrap">
                 <div class="pop-up-content-wrap">
-                Content Here
+                    <h2>Customer Payment</h2>
+                    <form action=""  method="post" id="payment-form">
+                        <h3>Amount Payable: <span id="amt-payable"></span></h3>
+                        <h3>Amount Received: </h3>
+                        <input type="text">
+                        <button>Submit</button>
+                    </form>
+                    
+
                 </div>
             </div>  
         </div>  
@@ -81,6 +89,10 @@
     <script>
         let order = [];
         const orderBox = document.querySelector('.order-child')
+
+        var form = document.getElementById("payment-form");
+        function handleForm(event) { event.preventDefault(); } 
+        form.addEventListener('submit', handleForm);
 
         function addToOrder(name){
             let custOrder = {
@@ -120,17 +132,15 @@
 
         function resetOrder(){  
             order = [];
-
-            document.getElementById('subtotal').innerHTML = '₱ 0.00';
-            document.getElementById('sc').innerHTML = '₱ 0.00';
-            document.getElementById('total').innerHTML = '₱ 0.00';
-
-
             let orderLength = orderBox.children.length;
 
             for(let i = 1; i <= orderLength; i++){
                 orderBox.removeChild(orderBox.childNodes[0]);
             }
+            
+            document.getElementById('subtotal').innerHTML = '₱ 0.00';
+            document.getElementById('sc').innerHTML = '₱ 0.00';
+            document.getElementById('total').innerHTML = '₱ 0.00';
         }
 
         function computeTotal(){
@@ -147,7 +157,7 @@
             document.getElementById('subtotal').innerHTML = '₱ ' + subtotal;
             document.getElementById('sc').innerHTML = '₱ ' + sc;
             document.getElementById('total').innerHTML = '₱ ' + total;
-            console.log(total)
+            document.getElementById('amt-payable').innerHTML = '₱ ' + total;
         }
     </script>
 </body>
