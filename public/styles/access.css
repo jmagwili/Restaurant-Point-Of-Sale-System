@@ -1,25 +1,22 @@
-/*CSS Styles for the entire website in general*/
-/*Font linking*/
-@import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
 *{
     margin: 0;
     padding: 0;
     background-color:white;
+    font-family: 'Quicksand';
 }
 
 header{
     display: flex;
     width: 100%;
-    height: 70px;
     background-color: #FFFFFF;
     position: fixed;
-    z-index: 1001;
+    z-index: 3;
     border-bottom: solid 1px rgb(220, 215, 215);
     display: flex;
     align-items: center;
     top: 0;
-}
-
+} 
 .spacer{
     width: 100%;
     height: 100%;
@@ -28,14 +25,7 @@ header{
     background-color:white;
     display: flex;
     align-items: center;
-} */
-
-.item{
-    height: 40px;
-    width: 40px;
-    background-color: white;
-}
-
+} 
 .logo{
     display: flex;
     height: 40px;
@@ -54,7 +44,6 @@ header{
     margin-left: 130px;
     height: 50px;
 }
-
 input{
     height: 45px;
     width: 357px;
@@ -81,17 +70,16 @@ input{
     left: 0;
     padding-top: 120px;
     border-right: 1px solid #ECEDED;
-    z-index: 1000;
 }
 
 
 .section{
-    /* display: flex; */
+    display: flex;
     font-family:'Anton', sans-serif;
     font-size: 15px;
-    /* height: 30px;
-    width: 80%; */
-    margin: 10px 0;
+    height: 30px;
+    width: 80%;
+    margin: 10px;
     text-align: center;
     border-radius: 10px;
     padding: 10px;
@@ -109,15 +97,56 @@ ion-icon {
 ion-icon:hover{
     color:  rgb(83, 141, 83);
     cursor: pointer;
+}  */
+
+*{
+    font-family: 'Quicksand';
+}
+.topbox{
+    margin-top: 8%;
+    width: 80%;
+    height: 60vh;
+    margin-left: 150px;
+}
+.topbox input{
+    height: 14px;
+    width: 14px;
+    margin-right: 45%;
 }
 
+.parent {
+    display: flex;
+    position: relative;
 
-.Pop-up {
-    position: fixed;
-    height: 100px;
-    width: 100px;
-    background-color: blue;
-    left: 50%;
-    top: 200px;
-    display: none;
 }
+.topbox td{
+ text-align: center;
+ background-color: rgb(219, 218, 218);
+}
+
+.topbox th{
+    background-color: rgb(173, 173, 245);
+}
+
+.container-header{
+    display: flex;
+    z-index: 1000;
+    justify-content: space-around;
+    position: relative;
+    width: 100%;
+    top: 100px;
+    background-color: inherit;
+}
+
+button{
+    height: 40px;
+    width: 80%;
+    border-radius: 10px;
+    border: none;
+    font-size: 1em;
+    margin-left: 5px;
+    margin-bottom: 5px;
+    cursor: pointer;
+    background-color: rgb(224, 223, 223);
+}
+
