@@ -1,5 +1,8 @@
+/*IMPORTANT: DO NOT OVERRIDE IN OTHER CSS FILES.*/
+
 /*CSS Styles for the entire website in general*/
 /*Font linking*/
+
 @import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
 *{
     margin: 0;

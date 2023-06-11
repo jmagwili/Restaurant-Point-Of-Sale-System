@@ -40,7 +40,7 @@
                     <h4 id="total">₱ 0.00</h4>
                 </div>
                 
-                <button class="cancel-btn">CANCEL</button>
+                <button onclick="resetOrder()" class="cancel-btn">CANCEL</button>
                 <button class="place-order-btn">PLACE ORDER</button>
             </div>
         </div>
@@ -102,8 +102,16 @@
             resetOrder();
         }
 
-        function resetOrder(){        
+        function resetOrder(){  
+            order = [];
+
+            document.getElementById('subtotal').innerHTML = '₱ 0.00';
+            document.getElementById('sc').innerHTML = '₱ 0.00';
+            document.getElementById('total').innerHTML = '₱ 0.00';
+
+
             let orderLength = orderBox.children.length;
+
             for(let i = 1; i <= orderLength; i++){
                 orderBox.removeChild(orderBox.childNodes[0]);
             }

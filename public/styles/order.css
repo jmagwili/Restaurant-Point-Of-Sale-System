@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
 *{
     margin: 0;
     padding: 0;
@@ -97,7 +97,7 @@ ion-icon {
 ion-icon:hover{
     color:  rgb(83, 141, 83);
     cursor: pointer;
-}
+} */
 
 .order-container{
     display: flex;
