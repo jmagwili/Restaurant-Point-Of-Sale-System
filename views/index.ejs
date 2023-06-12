@@ -56,7 +56,7 @@
                 <div class="pop-up-content-wrap">
                     <h2>CUSTOMER PAYMENT</h2>
                     <form action=""  method="post" id="payment-form">
-                        <h3>Amount Payable: <span id="amt-payable"></span></h3>
+                        <h3>Amount Payable: <span id="amt-payable">₱ 0.00</span></h3>
                         <h3>Amount Received: </h3>
                         <input type="number" id="custPayment"><br>
                         <button onclick="processPymnt()">Submit</button>
@@ -89,7 +89,13 @@
     <script>
         let order = [];
         let total = 0;
+        
         const orderBox = document.querySelector('.order-child')
+        let subtotal = document.getElementById('subtotal');
+        let sc = document.getElementById('sc');
+        let displayTotal = document.getElementById('total');
+        let amtPayable = document.getElementById('amt-payable');
+        let custPayment = document.getElementById('custPayment');
 
         var form = document.getElementById("payment-form");
         function handleForm(event) { event.preventDefault(); } 
@@ -139,29 +145,37 @@
                 orderBox.removeChild(orderBox.childNodes[0]);
             }
             
-            document.getElementById('subtotal').innerHTML = '₱ 0.00';
-            document.getElementById('sc').innerHTML = '₱ 0.00';
-            document.getElementById('total').innerHTML = '₱ 0.00';
+            subtotal.innerHTML = '₱ 0.00';
+            sc.innerHTML = '₱ 0.00';
+            displayTotal.innerHTML = '₱ 0.00';
+            
+            custPayment.value = '';
         }
 
         function computeTotal(){
             let subtotal = 0;
-            let sc = 0.0;
+            let scAmt = 0.0;
             
             for(let i = 0; i < orderBox.children.length; i++){
                 subtotal += order[i].amt;
             }
 
-            sc = subtotal * 0.1;
-            total = subtotal + sc;
-            document.getElementById('subtotal').innerHTML = '₱ ' + subtotal;
-            document.getElementById('sc').innerHTML = '₱ ' + sc;
-            document.getElementById('total').innerHTML = '₱ ' + total;
-            document.getElementById('amt-payable').innerHTML = '₱ ' + total;
+            scAmt = subtotal * 0.1;
+            total = subtotal + scAmt;
+            subtotal = '₱ ' + subtotal;
+
+            sc.innerHTML = '₱ ' + scAmt;
+            displayTotal.innerHTML = '₱ ' + total;
+            amtPayable.innerHTML = '₱ ' + total;
         }
 
-        function sendData(){
-            fetch('http://localhost:3000/orders', {
+        function processPymnt(){
+            const custPayment = parseInt(document.getElementById('custPayment').value);
+            
+            if(custPayment < total){
+                window.alert('Insufficient Payment');
+            }else{
+                fetch('http://localhost:3000/orders', {
                 method: "POST",
                 body: JSON.stringify(order),
                 headers: {
@@ -169,25 +183,15 @@
                 },
                 credentials: "same-origin"
                 }).then(function(response) {
-                            response.status     //=> number 100–599
-                            response.statusText //=> String
-                            response.headers    //=> Headers
-                            response.url        //=> String
-                            console.log(response)
-                            return response.text()
-                },  function(error) {
-                        error.message //=> String
-                })
-        }
+                    if(response.redirected){
+                        window.alert('Order unsuccessful. Please log-in to continue.')
+                    }else{
 
-        function processPymnt(){
-            const custPayment = parseInt(document.getElementById('custPayment').value);
-            
-            if(custPayment >= total){
-                sendData();
-                console.log('payment succesful');
-            }else{
-                window.alert('Insufficient Payment');
+                    }
+                    return response;
+                },function(error) {
+                    console.log(error.message);
+                })
             }
         }
     </script>
