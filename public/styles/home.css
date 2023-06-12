@@ -74,6 +74,7 @@ color:white;
     border-left: solid 1px rgb(220, 215, 215);
 }
 .order h3{
+    color: #2C3832;
     font-family: 'Quicksand', sans-serif;
     font-weight: 600;
     text-align: center;
@@ -226,4 +227,24 @@ color:white;
 
 .place-order-btn{
     background-color: #B1CED4;
+}
+
+.pop-up-content-wrap{
+    padding: 10px 50px;
+}
+
+.pop-up-content-wrap h2{
+    color: #2E636E;
+    text-align: center;
+    font-weight: 600;
+    margin-bottom: 40px;
+}
+
+#payment-form{
+    line-height: 30px;
+}
+
+#payment-form input{
+    margin: 0;
+    width: 100%;
 }

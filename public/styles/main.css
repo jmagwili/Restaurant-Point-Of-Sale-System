@@ -112,14 +112,3 @@ ion-icon:hover{
     color:  rgb(83, 141, 83);
     cursor: pointer;
 }
-
-
-.Pop-up {
-    position: fixed;
-    height: 100px;
-    width: 100px;
-    background-color: blue;
-    left: 50%;
-    top: 200px;
-    display: none;
-}

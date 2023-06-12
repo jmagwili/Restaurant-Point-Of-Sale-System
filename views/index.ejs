@@ -54,12 +54,12 @@
         <div class="close-btn">×</div>
             <div class="custom-model-wrap">
                 <div class="pop-up-content-wrap">
-                    <h2>Customer Payment</h2>
+                    <h2>CUSTOMER PAYMENT</h2>
                     <form action=""  method="post" id="payment-form">
                         <h3>Amount Payable: <span id="amt-payable"></span></h3>
                         <h3>Amount Received: </h3>
-                        <input type="text">
-                        <button>Submit</button>
+                        <input type="number" id="custPayment"><br>
+                        <button onclick="processPymnt()">Submit</button>
                     </form>
                     
 
@@ -88,6 +88,7 @@
     <script src="/script/popup.js"></script>
     <script>
         let order = [];
+        let total = 0;
         const orderBox = document.querySelector('.order-child')
 
         var form = document.getElementById("payment-form");
@@ -146,8 +147,7 @@
         function computeTotal(){
             let subtotal = 0;
             let sc = 0.0;
-            let total = 0;
-
+            
             for(let i = 0; i < orderBox.children.length; i++){
                 subtotal += order[i].amt;
             }
@@ -158,6 +158,37 @@
             document.getElementById('sc').innerHTML = '₱ ' + sc;
             document.getElementById('total').innerHTML = '₱ ' + total;
             document.getElementById('amt-payable').innerHTML = '₱ ' + total;
+        }
+
+        function sendData(){
+            fetch('http://localhost:3000/orders', {
+                method: "POST",
+                body: JSON.stringify(order),
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                credentials: "same-origin"
+                }).then(function(response) {
+                            response.status     //=> number 100–599
+                            response.statusText //=> String
+                            response.headers    //=> Headers
+                            response.url        //=> String
+                            console.log(response)
+                            return response.text()
+                },  function(error) {
+                        error.message //=> String
+                })
+        }
+
+        function processPymnt(){
+            const custPayment = parseInt(document.getElementById('custPayment').value);
+            
+            if(custPayment >= total){
+                sendData();
+                console.log('payment succesful');
+            }else{
+                window.alert('Insufficient Payment');
+            }
         }
     </script>
 </body>
