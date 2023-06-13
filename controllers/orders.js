@@ -19,7 +19,7 @@ orderRoute.post('/', (req, res) =>{
         }
     }
     query = query + queryValues
-    console.log(query)  
+    console.log(query)
 })
 
 module.exports = orderRoute
