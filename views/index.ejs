@@ -185,13 +185,13 @@
                 }).then(function(response) {
                     if(response.redirected){
                         window.alert('Order unsuccessful. Please log-in to continue.')
-                    }else{
-
                     }
+                    
                     return response;
                 },function(error) {
                     console.log(error.message);
                 })
+                resetOrder();
             }
         }
     </script>
