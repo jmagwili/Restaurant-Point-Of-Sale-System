@@ -35,7 +35,7 @@ module.exports.checkAuthentication = (req, res, next) => {
 
 //routes
 app.use('/menu', menuRoute)
-app.use('/orders', this.checkAuthentication, orderRoute)
+app.use('/orders', orderRoute)
 app.use('/user-access',this.checkAuthentication, userAccessRoute)
 
 app.get('/',(req, res) => {
