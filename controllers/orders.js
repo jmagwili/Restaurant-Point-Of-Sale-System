@@ -2,8 +2,25 @@ const express = require('express')
 const db = require('../database')
 const orderRoute = express.Router()
 
+let orders
+
+function getOrders(){
+    try{
+        const query = 'SELECT order_details FROM orders'
+        db.query(query, (err, results) => {
+            orders = results
+            console.log(orders.length)
+           console.log(orders[0].order_details[0].name) 
+        })
+    }catch(e){
+        console.log(e)
+    }
+}
+
 orderRoute.get('/', (req, res) => {
-    res.render('orders',{username: req.session.username})
+    getOrders()
+    console.log(JSON.stringify(orders))
+    res.render('orders', {orders})
 })
 
 orderRoute.post('/', (req, res) =>{
