@@ -114,7 +114,7 @@ ion-icon:hover{
 }
 
 .orderbox::before{
-    content: 'ORDER #';
+    /* content: 'ORDER #'; */
     font-size: 25px;
     font-weight: bold;
     background-color: white;

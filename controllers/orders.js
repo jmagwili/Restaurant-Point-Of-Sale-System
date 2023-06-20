@@ -6,11 +6,11 @@ let orders
 
 function getOrders(){
     try{
-        const query = 'SELECT order_details FROM orders'
+        const query = 'SELECT * FROM orders'
         db.query(query, (err, results) => {
             orders = results
-            console.log(orders.length)
-           console.log(orders[0].order_details[0].name) 
+        //     console.log(orders.length)
+        //    console.log(orders[0].order_details[0].name) 
         })
     }catch(e){
         console.log(e)
@@ -19,25 +19,17 @@ function getOrders(){
 
 orderRoute.get('/', (req, res) => {
     getOrders()
-    console.log(JSON.stringify(orders))
+    // console.log(JSON.stringify(orders))
     res.render('orders', {orders})
 })
 
-orderRoute.post('/', (req, res) =>{
-    // console.log(req.body)
-    console.log('post request received')
-    
-    let query = "INSERT INTO orders(order_details) VALUE ('"+ JSON.stringify(req.body) +"')"
-    // let queryValues = ""
-    // for(let i = 0; i <= req.body.length - 1; i++){
-    //     queryValues = queryValues + "(name='"+req.body[i].name+"', qty="+req.body[i].qty+", amt="+req.body[i].amt+")"
-    //     if(i < req.body.length - 1){
-    //         queryValues = queryValues + ", "
-    //     }
-    // }
-    // query = query + queryValues
-    db.query(query)
-    console.log(query)
+orderRoute.post('/cancel', (req,res)=>{
+    console.log('Delete request received')
+    console.log(req.body.deleteOrder)
+    db.query("DELETE FROM orders where order_id = " + req.body.deleteOrder, (result => {
+        console.log(result)
+    }))
+    res.redirect('/orders')
 })
 
 module.exports = orderRoute
