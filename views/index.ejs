@@ -175,7 +175,7 @@
             if(custPayment < total){
                 window.alert('Insufficient Payment');
             }else{
-                fetch('http://localhost:3000/orders', {
+                fetch('http://localhost:3000/menu', {
                 method: "POST",
                 body: JSON.stringify(order),
                 headers: {

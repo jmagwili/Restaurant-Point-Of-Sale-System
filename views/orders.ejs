@@ -14,7 +14,8 @@
         <div class = "order-container">
             
             <% for(i = 0; i <= orders.length - 1; i++){ %>
-                <div class="orderbox">    
+                <div class="orderbox">
+                    <h1 style="text-align: center;">ORDER # <%= orders[i].order_id %></h1>    
                     <div class="order">  
                         <div style="border-bottom-left-radius: 30px;" class="order-box">
                             <span  style="background-color: #EAF0F0;            
@@ -31,15 +32,23 @@
                             border-top-right-radius: 15px;
                             height: 5vh;"
                             ><p>QTY</p></span>
-                            <span><p>1</p></span>
+                            
+                            <% orders[i].order_details.forEach((order)=>{ %>
+                                <span><p><%= order.qty %></p></span>
+                            <% }) %>
                           
                         </div>
                     </div>
     
                     <div class="buttons-box">
-                        <button style="background-color: #EC5A5A;">CANCEL ORDER</button>
-                        <button style="margin-bottom: 20px;
-                        background-color: #8BB5BE;">MARK AS DONE</button>
+                        <form action="/orders/cancel" method="post" name="delete">
+                            <input type="text" name="deleteOrder" value="<%= orders[i].order_id %>" style="display: none;">
+                            <button style="background-color: #EC5A5A;">CANCEL ORDER</button>
+                            <button style="margin-bottom: 20px;
+                            background-color: #8BB5BE;">MARK AS DONE</button>
+                        
+                        </form>
+                        
                     </div>
                 </div>   
             <% } %>

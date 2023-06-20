@@ -25,4 +25,20 @@ menuRoute.get('/', async (req, res) => {
     res.render('index', {menu})
 })
 
+menuRoute.post('/', (req, res) =>{
+    // console.log(req.body)
+    console.log('post request received')
+    
+    let query = "INSERT INTO orders(order_details) VALUE ('"+ JSON.stringify(req.body) +"')"
+    // let queryValues = ""
+    // for(let i = 0; i <= req.body.length - 1; i++){
+    //     queryValues = queryValues + "(name='"+req.body[i].name+"', qty="+req.body[i].qty+", amt="+req.body[i].amt+")"
+    //     if(i < req.body.length - 1){
+    //         queryValues = queryValues + ", "
+    //     }
+    // }
+    // query = query + queryValues
+    db.query(query)
+})
+
 module.exports = menuRoute
