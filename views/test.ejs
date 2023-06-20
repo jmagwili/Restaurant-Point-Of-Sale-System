@@ -3,6 +3,7 @@
 <head>
     <%- include("./partials/head") %>
     <link rel="stylesheet" href="/styles/access.css">
+    <link rel="stylesheet" href="/styles/popup.css">
 </head>
 <body>
     <div class="container-header">
@@ -11,37 +12,58 @@
         </div>
         <div>
             <button>SAVE</button>
-            <button>MANAGE</button>
+            <button class="Click-here">MANAGE</button>
         </div>
     </div>
 
     <%- include("./partials/header") %>
-<div class="parent">
-    <%- include("./partials/sidebar") %>
-
-
+    <div class="parent">
+        <%- include("./partials/sidebar") %>
+  
+        <table class="topbox">
+            <tr>
+                <th>USER ID</th>
+                <th>NAME</th>
+                <th>MENU</th>
+                <th>ORDERS</th>
+                <th>SALES</th>
+            </tr>
+            
+            <% usersData.forEach((user) => { %>
+                <tr>
+                    <td><%= user.user_id %></td>
+                    <td>Atty. Garret</td>
+                    <td><input type="checkbox" id="myCheckbox" <% if(user.hasMenuAccess){ %>checked<% } %>></td>
+                    <td><input type="checkbox" name=" " id=" " <% if(user.hasOrdersAccess){ %>checked<% } %>></td>
+                    <td><input type="checkbox" name=" " id=" " <% if(user.hasSalesAccess){ %>checked<% } %>></td>
+                </tr>    
+            <% }) %>
+        </table>
+    </div>
     
-<table class="topbox">
-    <tr>
-        <th>USER ID</th>
-        <th>NAME</th>
-        <th>MENU</th>
-        <th>ORDERS</th>
-        <th>SALES</th>
-    </tr>
+    <!-- POP-UP BOX -->
+    <div class="custom-model-main">
+        <div class="custom-model-inner">        
+        <div class="close-btn">×</div>
+            <div class="custom-model-wrap">
+                <div class="pop-up-content-wrap">
+                PUT YOUR CONTENT HERE
+                </div>
+            </div>  
+        </div>  
+        <div class="bg-overlay"></div>
+    </div>
     
-    <% usersData.forEach((user) => { %>
-        <tr>
-            <td><%= user.user_id %></td>
-            <td>Atty. Garret</td>
-            <td><input type="checkbox" id="myCheckbox" <% if(user.hasMenuAccess){ %>checked<% } %>></td>
-            <td><input type="checkbox" name=" " id=" " <% if(user.hasOrdersAccess){ %>checked<% } %>></td>
-            <td><input type="checkbox" name=" " id=" " <% if(user.hasSalesAccess){ %>checked<% } %>></td>
-        </tr>    
-    <% }) %>
-    
-    
-</table>
-</div>
+    <script>
+        document.querySelector(".Click-here").addEventListener('click', function() {
+            document.querySelector(".custom-model-main").classList.add('model-open');
+        });
+  
+        document.querySelectorAll(".close-btn, .bg-overlay").forEach(function(element) {
+            element.addEventListener('click', function() {
+                document.querySelector(".custom-model-main").classList.remove('model-open');
+            });
+        });
+    </script>
 </body>
 </html>
