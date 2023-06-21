@@ -3,7 +3,6 @@
 <head>
     <%- include("./partials/head") %>
     <link rel="stylesheet" href="/styles/access.css">
-    <link rel="stylesheet" href="/styles/popup.css">
 </head>
 <body>
     <div class="container-header">
@@ -47,7 +46,33 @@
         <div class="close-btn">×</div>
             <div class="custom-model-wrap">
                 <div class="pop-up-content-wrap">
-                PUT YOUR CONTENT HERE
+                <form action="">
+                    <fieldset>
+                        <legend>Search User</legend>
+                        <input type="text" placeholder="User ID">
+                        <button>Search</button>
+                    </fieldset>
+                    
+                    <fieldset>
+                        <legend>User Details</legend>
+                        <label for="name">Name</label>
+                        <input type="text" name="name">
+                        <br>
+
+                        <label for="username">Username</label>
+                        <input type="text" name="username">
+                        <br>
+
+                        <label for="password">Password</label>
+                        <input type="password" name="password">
+                        <br>
+                        <!-- <label for="name">Name</label>
+                        <input type="checkbox" name="name" value="Menu">
+                        <input type="checkbox" name="name">
+                        <input type="checkbox" name="name"> -->
+                        
+                    </fieldset>
+                </form>
                 </div>
             </div>  
         </div>  
