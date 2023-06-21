@@ -34,9 +34,9 @@ module.exports.checkAuthentication = (req, res, next) => {
 }
 
 //routes
-app.use('/menu',this.checkAuthentication ,menuRoute)
+app.use('/menu' ,menuRoute)
 app.use('/orders', orderRoute)
-app.use('/user-access', this.checkAuthentication, userAccessRoute)
+app.use('/user-access', userAccessRoute)
 
 app.get('/',(req, res) => {
     req.session.destroy()
