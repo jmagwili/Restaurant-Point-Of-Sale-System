@@ -38,4 +38,17 @@ userAccessRoute.post('/', (req,res) => {
     res.send({userSearch})
 })
 
+userAccessRoute.post('/update-record', (req,res) => {
+    console.log(req.body)
+    let query = "UPDATE users SET user_password=?, hasMenuAccess=?, hasOrdersAccess=?, hasSalesAccess=? WHERE userID=?"
+    try{
+        db.query(query, (err,results)=>{
+            console.log(results)
+            res.send('Record Successfully Updated')
+        })
+    }catch(err){
+        console.log(err)
+    }
+})
+
 module.exports = userAccessRoute

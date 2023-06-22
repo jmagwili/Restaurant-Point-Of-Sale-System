@@ -46,11 +46,11 @@
         <div class="close-btn">×</div>
             <div class="custom-model-wrap">
                 <div class="pop-up-content-wrap">
-                <form class="manage-pup-up" action="">
+                <form class="manage-pup-up" action="" id="manage-users-frm">
                     <fieldset class="fs-search-user">
                         <legend>Search User</legend>
-                        <input type="text" placeholder="User ID">
-                        <button>Search</button>
+                        <input type="text" placeholder="User ID" class="userID">
+                        <button onclick="getValues()">Search</button>
                     </fieldset>
                     
                     <fieldset class="fs-user-details">
@@ -61,30 +61,30 @@
                         </div>
                         <br>
                         <div>
-                            <label for="username">Username</label>
-                            <input type="text" name="username">
+                            <label for="username" class="">Username</label>
+                            <input type="text" name="username" class="username">
                         </div>
                         
                         <br>
                         <div>
                             <label for="password">Password</label>
-                            <input type="password" name="password">
+                            <input type="password" name="password" class="password">
                         </div>
                         
                         <br>
                         <div>
                             <label for="name">Access</label><br>
-                            <input type="checkbox" name="name">
+                            <input type="checkbox" name="name" class="menuCB">
                             <label for="">Menu</label><br>
-                            <input type="checkbox" name="name">
+                            <input type="checkbox" name="name" class="ordersCB">
                             <label for="">Orders</label><br>
-                            <input type="checkbox" name="name">
+                            <input type="checkbox" name="name" class="salesCB">
                             <label for="">Sales</label><br>
                         </div>
                         <div style="text-align: center; margin-top: 20px;">
                             <button>Add</button>
                             <button>Remove</button>
-                            <button>Save</button>
+                            <button>Update</button>
                         </div>
                         
                         
@@ -99,24 +99,47 @@
     <script src="/script/popup.js"></script>
     <script>
         let searchData;
-        let userID = {userid: 'admin123'}
+        let userID = {userid: ''};
+        
+        var form = document.getElementById("manage-users-frm");
+        function handleForm(event) { event.preventDefault(); } 
+        form.addEventListener('submit', handleForm);
 
-        function fetchData(){
+        function fetchData(username){
             fetch('http://localhost:3000/user-access', {
                 method: "POST",
-                body: JSON.stringify(userID),
+                body: JSON.stringify(username),
                 headers: {
                     "Content-Type": "application/json"
                 },
                 credentials: "same-origin"
                 }).then(function(response) {
                     return response.json();
-                }).then((data)=>console.log(data.userSearch[0]))
+                }).then((data)=>{
+                    searchData = data.userSearch[0]
+                    console.log(searchData)
+                })
         }
 
-        
+        function setValues(){
+            document.querySelector('.username').value = searchData.user_id
+            document.querySelector('.password').value = searchData.user_password
+            document.querySelector('.menuCB').checked = searchData.hasMenuAccess
+            document.querySelector('.ordersCB').checked = searchData.hasOrdersAccess
+            document.querySelector('.salesCB').checked = searchData.hasSalesAccess
+        }
 
-        fetchData()
+        function getValues(){
+            let username = document.querySelector('.userID').value;
+            userID.userid = username;
+            fetchData(userID);
+            console.log(searchData)
+            setValues();
+        }
+
+
+
+
     </script>
 </body>
 </html>
