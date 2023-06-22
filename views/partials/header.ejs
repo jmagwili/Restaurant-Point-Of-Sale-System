@@ -7,3 +7,21 @@
         <div class="account item"></div>
     </div>
 </header>
+
+<script>
+    let displayTime = document.querySelector('.account')
+
+    function displayCurrentTime() {
+        const currentDateTime = new Date();
+        const date = currentDateTime.toLocaleDateString();
+        const time = currentDateTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
+        displayTime.innerHTML = `${date},  ${time}`
+        
+        console.log(`${date} ${time}`);
+    }
+
+    displayCurrentTime();
+
+    setInterval(displayCurrentTime, 60000);
+</script>
