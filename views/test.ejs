@@ -50,7 +50,7 @@
                     <fieldset class="fs-search-user">
                         <legend>Search User</legend>
                         <input type="text" placeholder="User ID" class="userID">
-                        <button onclick="getValues()">Search</button>
+                        <button onclick="getUserID()">Search</button>
                     </fieldset>
                     
                     <fieldset class="fs-user-details">
@@ -84,7 +84,7 @@
                         <div style="text-align: center; margin-top: 20px;">
                             <button>Add</button>
                             <button>Remove</button>
-                            <button>Update</button>
+                            <button onclick="updateData()">Update</button>
                         </div>
                         
                         
@@ -99,6 +99,13 @@
     <script src="/script/popup.js"></script>
     <script>
         let searchData;
+        let updatedData = {
+            userid:'',
+            password:'',
+            hasMenuAccess:0,
+            hasOrdersAccess:0,
+            hasSalesAccess:0
+        }
         let userID = {userid: ''};
         
         var form = document.getElementById("manage-users-frm");
@@ -129,12 +136,36 @@
             document.querySelector('.salesCB').checked = searchData.hasSalesAccess
         }
 
-        function getValues(){
+        function getUserID(){
             let username = document.querySelector('.userID').value;
             userID.userid = username;
             fetchData(userID);
             console.log(searchData)
             setValues();
+        }
+
+        function getUpdatedRecord(){
+            updatedData.userid = document.querySelector('.username').value
+            updatedData.password = document.querySelector('.password').value
+            updatedData.hasMenuAccess = document.querySelector('.menuCB').checked
+            updatedData.hasOrdersAccess = document.querySelector('.ordersCB').checked
+            updatedData.hasSalesAccess = document.querySelector('.salesCB').checked
+            console.log(updatedData)
+        }
+
+        function updateData(){
+            getUpdatedRecord()
+
+            fetch('http://localhost:3000/user-access/update', {
+                method: "POST",
+                body: JSON.stringify(updatedData),
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                credentials: "same-origin"
+                }).then(function(response) {
+                    return response;
+                })
         }
 
 
