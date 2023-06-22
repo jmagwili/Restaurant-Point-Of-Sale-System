@@ -82,8 +82,8 @@
                             <label for="">Sales</label><br>
                         </div>
                         <div style="text-align: center; margin-top: 20px;">
-                            <button>Add</button>
-                            <button>Remove</button>
+                            <button onclick="addData()">Add</button>
+                            <button onclick="deleteData()">Remove</button>
                             <button onclick="updateData()">Update</button>
                         </div>
                         
@@ -168,9 +168,33 @@
                 })
         }
 
+        function deleteData(){
+            getUpdatedRecord()
+            fetch('http://localhost:3000/user-access/delete', {
+                method: "POST",
+                body: JSON.stringify(updatedData),
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                credentials: "same-origin"
+                }).then(function(response) {
+                    return response;
+                })            
+        }
 
-
-
+        function addData(){
+            getUpdatedRecord()
+            fetch('http://localhost:3000/user-access/add', {
+                method: "POST",
+                body: JSON.stringify(updatedData),
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                credentials: "same-origin"
+                }).then(function(response) {
+                    return response;
+                })
+        }
     </script>
 </body>
 </html>

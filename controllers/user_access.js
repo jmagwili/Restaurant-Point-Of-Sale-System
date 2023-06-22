@@ -57,4 +57,39 @@ userAccessRoute.post('/update', (req,res) => {
     }
 })
 
+userAccessRoute.post('/add', (req,res) => {
+    
+    let username = req.body.userid
+    let password = req.body.password
+    let hasMenuAccess = req.body.hasMenuAccess
+    let hasOrdersAccess = req.body.hasOrdersAccess
+    let hasSalesAccess = req.body.hasSalesAccess
+
+    console.log(req.body)
+
+    let verifyQuery = "SELECT * FROM users WHERE user_ID=?"
+    let insertQuery = "INSERT INTO users (user_id, user_password, hasMenuAccess, hasOrdersAccess, hasSalesAccess, hasUsersAccess) VALUES (?,?, ?, ?, ?, 1);"
+    
+    db.query(verifyQuery, [username], (err, results) => {
+        if(results.length === 0){
+            console.log('request received')
+            db.query(insertQuery, [username,password,hasMenuAccess,hasOrdersAccess,hasSalesAccess], (err,results) => {
+                console.log(results)
+            })
+        }else{
+            console.log('failed to execute')
+        }
+    })
+})
+
+userAccessRoute.post('/delete', (req,res) => {
+    let username = req.body.userid
+
+    let query = "DELETE FROM users WHERE user_ID=?"
+
+    db.query(query, [username], (err,results) => {
+        console.log(results)
+    })
+})
+
 module.exports = userAccessRoute
