@@ -31,10 +31,10 @@ nav ul li{
     justify-content: center;
 }
 
-nav ul li:hover{
+/* nav ul li:hover{
     background-color: rgb(83, 141, 83);
     cursor: pointer;
-}
+} */
 
 nav ul{
     background-color: inherit;
@@ -42,13 +42,26 @@ nav ul{
     display: flex;
     justify-content: space-around;
 }
+
+nav ul li a{
+    color: #A9A9A9;
+}
+
 a{
     text-decoration: none;
     background-color: inherit;
     color: black;
 }
-nav ul li:hover a{
+/* nav ul li:hover a{
 color:white;
+} */
+
+.main-course{
+    background-color: #4A5C2F;
+}
+
+.main-course a{
+    color: #ECF3F5;
 }
 .prod-list{
     width: 60%;
@@ -360,4 +373,8 @@ color:white;
 #payment-form input{
     margin: 0;
     width: 100%;
+}
+
+.menu-tab ion-icon{
+    color: #2E636E;
 }

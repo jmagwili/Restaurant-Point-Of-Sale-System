@@ -99,6 +99,10 @@ ion-icon:hover{
     cursor: pointer;
 } */
 
+.orders-tab ion-icon{
+    color: #2E636E;
+}
+
 .order-container{
     display: flex;
     justify-content: center;

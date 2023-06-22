@@ -1,10 +1,19 @@
 <div class="side-bar">
-    <a href="menu"><div class="section"><ion-icon name="grid-outline"></ion-icon></div></a>
-    <a href="orders"><div class="section"><ion-icon name="file-tray-stacked-outline"></ion-icon></div></a>
-    <a href=""></a><div class="section"><ion-icon name="bag-handle-outline"></ion-icon></div>
-    <a href="user-access"><div class="section"> <ion-icon name="person-circle-outline"></ion-icon></div></a>
+    <a href="menu" class="menu-tab"><div class="section"><ion-icon name="grid-outline"></ion-icon></div></a>
+    <a href="orders" class="orders-tab"><div class="section"><ion-icon name="file-tray-stacked-outline"></ion-icon></div></a>
+    <a href="" ></a><div class="section"><ion-icon name="bag-handle-outline"></ion-icon></div>
+    <a href="user-access" class="access-tab"><div class="section"> <ion-icon name="person-circle-outline"></ion-icon></div></a>
 
 </div>
 
 <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+<script>
+    const menu = document.querySelector('.menu-tab')
+    const orders = document.querySelector('.orders-tab')
+    const access = document.querySelector('.access-tab')
+
+    menu.addEventListener('click', ()=>{
+        const icon = menu.querySelector(':nth-child(2)').style.color = "#A9A9A9"
+    })
+</script>

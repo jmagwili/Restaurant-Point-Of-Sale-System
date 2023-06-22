@@ -102,13 +102,10 @@ input{
 }
 
 ion-icon {
+  color: #D8DBD9;
   font-size: 30px;
   margin-left: 10px;
   margin-right: 10px;
   background-color: inherit;
   transition: 200ms;
-}
-ion-icon:hover{
-    color:  rgb(83, 141, 83);
-    cursor: pointer;
 }

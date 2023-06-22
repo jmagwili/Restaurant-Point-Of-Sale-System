@@ -280,6 +280,10 @@ button{
     display: grid;
   }
 
+  .access-tab ion-icon{
+    color: #2E636E;
+  }
+
   
 
   
