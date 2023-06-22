@@ -3,6 +3,7 @@ const db = require('../database')
 const userAccessRoute = express.Router()
 
 let usersData
+let userSearch
 
 function getUserData(){
     try{
@@ -15,9 +16,26 @@ function getUserData(){
     }
 }
 
+function searchUser(userID){
+    try{
+        db.query("SELECT * FROM users WHERE user_ID = '" +userID+"'", (err, results) =>  {
+            userSearch = results
+            console.log(results)
+        })
+    }catch(err){
+        console.log(err)
+    }
+}
+
 userAccessRoute.get('/', (req,res) => {
     getUserData()
     res.render('test', {usersData})
+})
+
+userAccessRoute.get('/query-user', (req,res) => {
+    console.log(searchUser('admin123'))
+    console.log('request received')
+    res.send({userSearch})
 })
 
 module.exports = userAccessRoute
