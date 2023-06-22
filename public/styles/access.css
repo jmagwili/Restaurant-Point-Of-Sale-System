@@ -190,14 +190,14 @@ button{
     transition: transform 0.3s ease-out, -webkit-transform 0.3s ease-out;
     display: inline-block;
     vertical-align: middle;
-    width: 800px;
+    width: 700px;
     margin: 30px auto;
     max-width: 97%;
   }
   .custom-model-wrap {
     display: block;
     width: 100%;
-    height: 100vh;
+    height: auto;
     position: relative;
     background-color: #fff;
     border: 1px solid #999;
@@ -249,6 +249,32 @@ button{
     font-size: 30px;
     color: #fff;
   }
+
+  .manage-pup-up{
+    padding: 20px;
+  }
+
+  .manage-pup-up fieldset{
+    padding: 20px;
+    margin: 10px;
+    display: grid;
+
+  }
+
+  .manage-pup-up fieldset button{
+    width: 100px;
+  }
+
+  .manage-pup-up fieldset input{
+    margin-left: 0;
+    width: 92%;
+  }
+
+  .fs-user-details{
+    display: grid;
+  }
+
+  
 
   
 @media screen and (min-width:800px){
