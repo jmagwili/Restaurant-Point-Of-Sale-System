@@ -96,16 +96,31 @@
         <div class="bg-overlay"></div>
     </div>
     
+    <script src="/script/popup.js"></script>
     <script>
-        document.querySelector(".Click-here").addEventListener('click', function() {
-            document.querySelector(".custom-model-main").classList.add('model-open');
-        });
-  
-        document.querySelectorAll(".close-btn, .bg-overlay").forEach(function(element) {
-            element.addEventListener('click', function() {
-                document.querySelector(".custom-model-main").classList.remove('model-open');
-            });
-        });
+        let searchData;
+        let userID = {userid: 'admin123'}
+
+        function fetchData(){
+            fetch('http://localhost:3000/user-access', {
+                method: "POST",
+                body: JSON.stringify(userID),
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                credentials: "same-origin"
+                }).then(function(response) {
+                    if(response.redirected){
+                        window.alert('Order unsuccessful. Please log-in to continue.')
+                    }
+                    
+                    return response;
+                },function(error) {
+                    console.log(error.message);
+                })
+        }
+
+        fetchData()
     </script>
 </body>
 </html>

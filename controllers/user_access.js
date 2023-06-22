@@ -8,7 +8,7 @@ let userSearch
 function getUserData(){
     try{
         db.query("SELECT * FROM users", (err, results) => {
-            console.log(results)
+            // console.log(results)
             usersData = results    
         })
     }catch(err){
@@ -32,8 +32,8 @@ userAccessRoute.get('/', (req,res) => {
     res.render('test', {usersData})
 })
 
-userAccessRoute.get('/query-user', (req,res) => {
-    console.log(searchUser('admin123'))
+userAccessRoute.post('/', (req,res) => {
+    searchUser(req.body.userid)
     console.log('request received')
     res.send({userSearch})
 })
