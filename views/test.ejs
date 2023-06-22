@@ -110,15 +110,11 @@
                 },
                 credentials: "same-origin"
                 }).then(function(response) {
-                    if(response.redirected){
-                        window.alert('Order unsuccessful. Please log-in to continue.')
-                    }
-                    
-                    return response;
-                },function(error) {
-                    console.log(error.message);
-                })
+                    return response.json();
+                }).then((data)=>console.log(data.userSearch[0]))
         }
+
+        
 
         fetchData()
     </script>
