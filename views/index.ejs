@@ -116,7 +116,7 @@
                 amt: price
             };
             order.push(custOrder);
-            createCList(name);
+            createCList(name, price);
             computeTotal();
             console.log("added " + JSON.stringify(custOrder));
             
@@ -126,7 +126,7 @@
             document.querySelector(`.${name.replace(/ /g, '_')}_box`).classList.add('product_ordered');
         }
 
-        function createCList(name, img = '/images/p.jpg'){
+        function createCList(name,price,img = '/images/p.jpg'){
             const orderList = document.createElement('div');
             orderList.classList.add('order-list');
             orderBox.appendChild(orderList);
@@ -140,6 +140,11 @@
             orderLabel.innerHTML = name;
             orderLabel.classList.add('order-label');
             orderList.appendChild(orderLabel);
+
+            const orderPrice = document.createElement('span');
+            orderPrice.innerHTML = '₱ ' + price;
+            orderPrice.classList.add('order-price')
+            orderList.appendChild(orderPrice);
         }
 
         function placeOrder(){
