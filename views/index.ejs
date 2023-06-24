@@ -71,13 +71,19 @@
     <!--Products Container-->
     <div id="prod-list" class="prod-list">
         <% menu.forEach((item) => { %> 
-            <div class="products show_button  <%= JSON.stringify(item.prod_name).replace(/ /g, '_').replace(/["]/g, '') %>_box">
+            <div class=
+            "products show_button  
+            <%= JSON.stringify(item.prod_name).replace(/ /g, '_').replace(/["]/g, '') %>_box 
+            <%= JSON.stringify(item.prod_category).replace(/["]/g, '') %>_item">
+            
                 <img src="/images/p.jpg" alt="">
-                <p><%= JSON.stringify(item.prod_name).toUpperCase().replace(/["]/g, '') %></p>
+                
+                    <p><%= JSON.stringify(item.prod_name).toUpperCase().replace(/["]/g, '') %></p>
                 
                 <button onclick="addToOrder(<%= JSON.stringify(item.prod_name) %>)" class="<%= JSON.stringify(item.prod_name).replace(/ /g, '_').replace(/["]/g, '') %>_btn">ADD</button>
-            </div> 
+            </div>
         <% }); %>
+
     </div>
     <!-- <script src="/script/script.js"></script> -->
 
@@ -209,9 +215,7 @@
         }
     </script>
     <script>
-        const nav = document.querySelector('nav')
-        const ul = nav.querySelector('ul')
-        const li = nav.querySelectorAll('li')
+        const li = document.querySelectorAll('li')
 
         for(let i = 0; i <= li.length - 1; i++){
             li[i].addEventListener('click', () => {
@@ -221,11 +225,65 @@
                         console.log('im called')
                     }
                 }
-                li[i].classList.add('selected-tab')
-
-                
+                li[i].classList.add('selected-tab')      
             })
         }
+    </script>
+    <script>
+        const allItems = document.querySelectorAll('products');
+        const mainItem = document.querySelectorAll('.main_item');
+        const appetizerItem = document.querySelectorAll('.appetizer_item');
+        const dessertItem = document.querySelectorAll('.dessert_item');
+        const drinksItem = document.querySelectorAll('.drinks_item');
+
+        function displayMenu(category='main_item'){
+            if(category === 'main_item'){
+                
+                allItems.forEach((item)=>{
+                    if(item.classList.contains('show-item')){
+                        item.classList.remove('show-item')   
+                    }
+                })
+                mainItem.forEach((item)=>{
+                    item.classList.add('show-item')
+                })
+
+            }else if(category === 'appetizers_item' || category === 'side_item'){
+                allItems.forEach((item)=>{
+                    if(item.classList.contains('show-item')){
+                        item.classList.remove('show-item');
+                    }
+                })
+                
+                appetizerItem.forEach((item)=>{
+                    item.classList.add('show-item')
+                })
+
+            }else if(category === 'dessert_item'){
+                allItems.forEach((item)=>{
+                    if(item.classList.contains('show-item')){
+                        item.classList.remove('show-item');
+                    }
+                })
+                
+                dessertItem.forEach((item)=>{
+                    item.classList.add('show-item')
+                })
+
+            }else if(category === 'drinks_item'){
+                allItems.forEach((item)=>{
+                    if(item.classList.contains('show-item')){
+                        item.classList.remove('show-item');
+                    }
+                })
+                
+                drinksItem.forEach((item)=>{
+                    item.classList.add('show-item')
+                })
+            }
+        }
+
+        displayMenu();
     </script>
 </body>
 </html>

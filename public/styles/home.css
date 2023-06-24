@@ -139,6 +139,7 @@ color:white;
     margin: 10px;
     text-align: center;
     position: relative;
+    display: none;
 }
 
 .products img{
@@ -176,6 +177,10 @@ color:white;
 
 .products:hover img{
     filter: brightness(40%) hue-rotate(10deg);
+}
+
+.show-item{
+    display: block;
 }
 
 .show_button:hover button{
@@ -388,3 +393,5 @@ color:white;
 .menu-tab ion-icon{
     color: #2E636E;
 }
+
+.
