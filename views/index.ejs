@@ -13,10 +13,10 @@
         <!--Center Navigation Bar-->
         <nav>
             <ul>
-                <li class="selected-tab"> <a href="#">MAIN COURSE</a></li>
-                <li><a href="#">APPETIZERS</a></li>
-                <li><a href="#">DESSSERTS</a></li>
-                <li><a href="#">DRINKS</a></li>
+                <li class="selected-tab main"> <a>MAIN COURSE</a></li>
+                <li class="appetizer"><a>APPETIZERS</a></li>
+                <li class="dessert"><a>DESSERTS</a></li>
+                <li class="drinks"><a href="#">DRINKS</a></li>
             </ul>
         </nav>
         
@@ -216,39 +216,48 @@
     </script>
     <script>
         const li = document.querySelectorAll('li')
+        const allItems = document.querySelectorAll('.products');
+        const mainItem = document.querySelectorAll('.main_item');
+        const appetizerItem = document.querySelectorAll('.appetizer_item');
+        const dessertItem = document.querySelectorAll('.dessert_item');
+        const drinksItem = document.querySelectorAll('.drinks_item');
+        
 
         for(let i = 0; i <= li.length - 1; i++){
             li[i].addEventListener('click', () => {
                 for(let j = 0; j <= li.length - 1; j++){
                     if(li[j].classList.contains('selected-tab')){
                         li[j].classList.remove('selected-tab')
-                        console.log('im called')
                     }
                 }
-                li[i].classList.add('selected-tab')      
+                li[i].classList.add('selected-tab')
+                
+                if(li[i].classList.contains('main')){
+                    displayMenu('main');
+                }else if(li[i].classList.contains('appetizer')){
+                    displayMenu('appetizer');
+                }else if(li[i].classList.contains('dessert')){
+                    displayMenu('dessert');
+                }else if(li[i].classList.contains('drinks')){
+                    displayMenu('drinks');
+                }
             })
         }
-    </script>
-    <script>
-        const allItems = document.querySelectorAll('products');
-        const mainItem = document.querySelectorAll('.main_item');
-        const appetizerItem = document.querySelectorAll('.appetizer_item');
-        const dessertItem = document.querySelectorAll('.dessert_item');
-        const drinksItem = document.querySelectorAll('.drinks_item');
-
-        function displayMenu(category='main_item'){
-            if(category === 'main_item'){
+        displayMenu()
+        function displayMenu(category='main'){
+            if(category === 'main'){
                 
                 allItems.forEach((item)=>{
                     if(item.classList.contains('show-item')){
                         item.classList.remove('show-item')   
+                        console.log(item.classList)
                     }
                 })
                 mainItem.forEach((item)=>{
                     item.classList.add('show-item')
                 })
 
-            }else if(category === 'appetizers_item' || category === 'side_item'){
+            }else if(category === 'appetizer'){
                 allItems.forEach((item)=>{
                     if(item.classList.contains('show-item')){
                         item.classList.remove('show-item');
@@ -259,7 +268,7 @@
                     item.classList.add('show-item')
                 })
 
-            }else if(category === 'dessert_item'){
+            }else if(category === 'dessert'){
                 allItems.forEach((item)=>{
                     if(item.classList.contains('show-item')){
                         item.classList.remove('show-item');
@@ -270,7 +279,7 @@
                     item.classList.add('show-item')
                 })
 
-            }else if(category === 'drinks_item'){
+            }else if(category === 'drinks'){
                 allItems.forEach((item)=>{
                     if(item.classList.contains('show-item')){
                         item.classList.remove('show-item');
@@ -282,8 +291,9 @@
                 })
             }
         }
+    </script>
+    <script>
 
-        displayMenu();
     </script>
 </body>
 </html>

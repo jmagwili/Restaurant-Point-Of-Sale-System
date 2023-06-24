@@ -29,6 +29,7 @@ nav ul li{
     border-radius: 7px;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
 }
 
 /* nav ul li:hover{
@@ -43,7 +44,7 @@ nav ul{
     justify-content: space-around;
 }
 
-nav ul li a{
+nav ul li button{
     color: #A9A9A9;
 }
 
@@ -51,6 +52,7 @@ a{
     text-decoration: none;
     background-color: inherit;
     color: black;
+    cursor: pointer;
 }
 /* nav ul li:hover a{
 color:white;
