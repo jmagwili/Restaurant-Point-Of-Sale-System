@@ -21,7 +21,6 @@ function getMenu(){
 
 menuRoute.get('/', async (req, res) => {
     await getMenu()  
-    console.log([{menu},req.session.username])
     res.render('index', {menu})
 })
 

@@ -79,8 +79,10 @@
                 <img src="/images/p.jpg" alt="">
                 
                     <p><%= JSON.stringify(item.prod_name).toUpperCase().replace(/["]/g, '') %></p>
+                    <p class="prod-price">₱ <%= JSON.stringify(item.prod_price)%></p>
                 
-                <button onclick="addToOrder(<%= JSON.stringify(item.prod_name) %>)" class="<%= JSON.stringify(item.prod_name).replace(/ /g, '_').replace(/["]/g, '') %>_btn">ADD</button>
+                <button onclick="addToOrder(<%= JSON.stringify(item.prod_name) %>,<%= item.prod_price %>)"
+                    class="<%= JSON.stringify(item.prod_name).replace(/ /g, '_').replace(/["]/g, '') %>_btn">ADD</button>
             </div>
         <% }); %>
 
@@ -96,7 +98,7 @@
         let total = 0;
         
         const orderBox = document.querySelector('.order-child')
-        let subtotal = document.getElementById('subtotal');
+        let displaySubtotal = document.getElementById('subtotal');
         let sc = document.getElementById('sc');
         let displayTotal = document.getElementById('total');
         let amtPayable = document.getElementById('amt-payable');
@@ -106,12 +108,12 @@
         function handleForm(event) { event.preventDefault(); } 
         form.addEventListener('submit', handleForm);
 
-        function addToOrder(name){
+        function addToOrder(name, price=100){
             let custOrder = {
                 name: name,
                 qty: 1,
                 size: 's',
-                amt: 100
+                amt: price
             };
             order.push(custOrder);
             createCList(name);
@@ -181,11 +183,11 @@
 
             scAmt = subtotal * 0.1;
             total = subtotal + scAmt;
-            subtotal = '₱ ' + subtotal;
 
-            sc.innerHTML = '₱ ' + scAmt;
-            displayTotal.innerHTML = '₱ ' + total;
-            amtPayable.innerHTML = '₱ ' + total;
+            sc.innerHTML = '₱ ' + scAmt.toFixed(2);
+            displaySubtotal.innerHTML = '₱ ' + subtotal.toFixed(2);
+            displayTotal.innerHTML = '₱ ' + total.toFixed(2);
+            amtPayable.innerHTML = '₱ ' + total.toFixed(2);
         }
 
         function processPymnt(){
