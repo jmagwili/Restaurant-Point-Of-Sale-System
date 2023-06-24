@@ -13,7 +13,7 @@
         <!--Center Navigation Bar-->
         <nav>
             <ul>
-                <li class="main-course"> <a href="#">MAIN COURSE</a></li>
+                <li class="selected-tab"> <a href="#">MAIN COURSE</a></li>
                 <li><a href="#">APPETIZERS</a></li>
                 <li><a href="#">DESSSERTS</a></li>
                 <li><a href="#">DRINKS</a></li>
@@ -208,6 +208,24 @@
             }
         }
     </script>
+    <script>
+        const nav = document.querySelector('nav')
+        const ul = nav.querySelector('ul')
+        const li = nav.querySelectorAll('li')
 
+        for(let i = 0; i <= li.length - 1; i++){
+            li[i].addEventListener('click', () => {
+                for(let j = 0; j <= li.length - 1; j++){
+                    if(li[j].classList.contains('selected-tab')){
+                        li[j].classList.remove('selected-tab')
+                        console.log('im called')
+                    }
+                }
+                li[i].classList.add('selected-tab')
+
+                
+            })
+        }
+    </script>
 </body>
 </html>

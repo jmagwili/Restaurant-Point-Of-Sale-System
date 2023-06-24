@@ -56,11 +56,11 @@ a{
 color:white;
 } */
 
-.main-course{
+.selected-tab{
     background-color: #4A5C2F;
 }
 
-.main-course a{
+.selected-tab a{
     color: #ECF3F5;
 }
 .prod-list{
