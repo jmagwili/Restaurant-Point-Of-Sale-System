@@ -71,11 +71,11 @@
     <!--Products Container-->
     <div id="prod-list" class="prod-list">
         <% menu.forEach((item) => { %> 
-            <div class="products">
+            <div class="products show_button  <%= JSON.stringify(item.prod_name).replace(/ /g, '_').replace(/["]/g, '') %>_box">
                 <img src="/images/p.jpg" alt="">
                 <p><%= JSON.stringify(item.prod_name).toUpperCase().replace(/["]/g, '') %></p>
                 
-                <button onclick="addToOrder(<%= JSON.stringify(item.prod_name) %>)">ADD</button>
+                <button onclick="addToOrder(<%= JSON.stringify(item.prod_name) %>)" class="<%= JSON.stringify(item.prod_name).replace(/ /g, '_').replace(/["]/g, '') %>_btn">ADD</button>
             </div> 
         <% }); %>
     </div>
@@ -111,7 +111,10 @@
             createCList(name);
             computeTotal();
             console.log("added " + JSON.stringify(custOrder));
-
+            
+            document.querySelector(`.${name.replace(/ /g, '_')}_btn`).innerHTML = 'ADDED';
+            document.querySelector(`.${name.replace(/ /g, '_')}_box`).classList.remove('show_button')
+            document.querySelector(`.${name.replace(/ /g, '_')}_box`).classList.add('product_ordered')
         }
 
         function createCList(name, img = '/images/p.jpg'){

@@ -178,9 +178,18 @@ color:white;
     filter: brightness(40%) hue-rotate(10deg);
 }
 
-.products:hover button{
+.show_button:hover button{
     top: 50px;
     opacity: 100%;
+}
+
+.product_ordered button{
+    top: 50px;
+    opacity: 100%;
+}
+
+.product_ordered img{
+    filter: brightness(40%) hue-rotate(10deg);
 }
 
 .payment-breakdown{
