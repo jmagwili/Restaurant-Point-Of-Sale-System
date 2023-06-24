@@ -113,8 +113,9 @@
             console.log("added " + JSON.stringify(custOrder));
             
             document.querySelector(`.${name.replace(/ /g, '_')}_btn`).innerHTML = 'ADDED';
-            document.querySelector(`.${name.replace(/ /g, '_')}_box`).classList.remove('show_button')
-            document.querySelector(`.${name.replace(/ /g, '_')}_box`).classList.add('product_ordered')
+            document.querySelector(`.${name.replace(/ /g, '_')}_btn`).disabled = true;
+            document.querySelector(`.${name.replace(/ /g, '_')}_box`).classList.remove('show_button');
+            document.querySelector(`.${name.replace(/ /g, '_')}_box`).classList.add('product_ordered');
         }
 
         function createCList(name, img = '/images/p.jpg'){

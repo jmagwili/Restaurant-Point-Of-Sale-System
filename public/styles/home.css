@@ -186,6 +186,7 @@ color:white;
 .product_ordered button{
     top: 50px;
     opacity: 100%;
+    color: black;
 }
 
 .product_ordered img{
