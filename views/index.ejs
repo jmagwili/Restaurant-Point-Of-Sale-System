@@ -141,11 +141,21 @@
         }
 
         function resetOrder(){  
+            const menuItems = document.querySelectorAll('.product_ordered')
+            
             order = [];
             let orderLength = orderBox.children.length;
 
             for(let i = 1; i <= orderLength; i++){
                 orderBox.removeChild(orderBox.childNodes[0]);
+            }
+
+            for(let i = 0; i <= menuItems.length-1; i++){
+                menuItems[i].classList.add('show_button');
+                menuItems[i].classList.remove('product_ordered');
+                const menuBtn = menuItems[i].querySelector('button');
+                menuBtn.disabled = false;
+                menuBtn.innerHTML = 'ADD';
             }
             
             subtotal.innerHTML = '₱ 0.00';
