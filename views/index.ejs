@@ -136,15 +136,19 @@
             orderImg.classList.add('order-img');
             orderList.appendChild(orderImg);
 
-            const orderLabel = document.createElement('span');
-            orderLabel.innerHTML = name;
-            orderLabel.classList.add('order-label');
-            orderList.appendChild(orderLabel);
+            const orderLbl = document.createElement('div');
+            orderLbl.classList.add('order-label');
+            orderList.appendChild(orderLbl);
+
+            const orderItemName = document.createElement('span');
+            orderItemName.innerHTML = name;
+            orderItemName.classList.add('order-item-name');
+            orderLbl.appendChild(orderItemName);
 
             const orderPrice = document.createElement('span');
             orderPrice.innerHTML = '₱ ' + price;
             orderPrice.classList.add('order-price')
-            orderList.appendChild(orderPrice);
+            orderLbl.appendChild(orderPrice);
         }
 
         function placeOrder(){
