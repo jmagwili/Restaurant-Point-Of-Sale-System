@@ -126,7 +126,7 @@
             document.querySelector(`.${name.replace(/ /g, '_')}_box`).classList.add('product_ordered');
         }
 
-        function createCList(name,price,img = '/images/p.jpg'){
+        function createCList(name,price,qty,img = '/images/p.jpg'){
             const orderList = document.createElement('div');
             orderList.classList.add('order-list');
             orderBox.appendChild(orderList);
@@ -147,8 +147,35 @@
 
             const orderPrice = document.createElement('span');
             orderPrice.innerHTML = '₱ ' + price;
-            orderPrice.classList.add('order-price')
+            orderPrice.classList.add('order-price');
             orderLbl.appendChild(orderPrice);
+
+            const qtyBox = document.createElement('div');
+            qtyBox.classList.add('qty-box');
+            orderList.appendChild(qtyBox);
+
+            const qtyHeading = document.createElement('h4');
+            qtyHeading.innerHTML = 'QTY';
+            qtyBox.appendChild(qtyHeading);
+
+            const qtyCountBox = document.createElement('div');
+            qtyCountBox.classList.add('qty-count-box');
+            qtyBox.appendChild(qtyCountBox);
+
+            const qtyCountBtnMinus = document.createElement('button');
+            qtyCountBtnMinus.classList.add('qty-count-btn');
+            qtyCountBtnMinus.innerHTML = '-'
+            qtyBox.appendChild(qtyCountBtnMinus);
+
+            const qtyCountLbl = document.createElement('span');
+            qtyCountLbl.classList.add('qty-count-lbl');
+            qtyCountLbl.innerHTML = '1';
+            qtyBox.appendChild(qtyCountLbl);
+
+            const qtyCountBtnAdd = document.createElement('button');
+            qtyCountBtnAdd.classList.add('qty-count-btn');
+            qtyCountBtnAdd.innerHTML = '+'
+            qtyBox.appendChild(qtyCountBtnAdd);
         }
 
         function placeOrder(){
@@ -158,7 +185,7 @@
         }
 
         function resetOrder(){  
-            const menuItems = document.querySelectorAll('.product_ordered')
+            const menuItems = document.querySelectorAll('.product_ordered');
             
             order = [];
             let orderLength = orderBox.children.length;
@@ -214,7 +241,7 @@
                 credentials: "same-origin"
                 }).then(function(response) {
                     if(response.redirected){
-                        window.alert('Order unsuccessful. Please log-in to continue.')
+                        window.alert('Order unsuccessful. Please log-in to continue.');
                     }
                     
                     return response;
@@ -226,7 +253,7 @@
         }
     </script>
     <script>
-        const li = document.querySelectorAll('li')
+        const li = document.querySelectorAll('li');
         const allItems = document.querySelectorAll('.products');
         const mainItem = document.querySelectorAll('.main_item');
         const appetizerItem = document.querySelectorAll('.appetizer_item');
@@ -238,7 +265,7 @@
             li[i].addEventListener('click', () => {
                 for(let j = 0; j <= li.length - 1; j++){
                     if(li[j].classList.contains('selected-tab')){
-                        li[j].classList.remove('selected-tab')
+                        li[j].classList.remove('selected-tab');
                     }
                 }
                 li[i].classList.add('selected-tab')
@@ -254,18 +281,17 @@
                 }
             })
         }
-        displayMenu()
+        displayMenu();
         function displayMenu(category='main'){
             if(category === 'main'){
                 
                 allItems.forEach((item)=>{
                     if(item.classList.contains('show-item')){
-                        item.classList.remove('show-item')   
-                        console.log(item.classList)
+                        item.classList.remove('show-item');   
                     }
                 })
                 mainItem.forEach((item)=>{
-                    item.classList.add('show-item')
+                    item.classList.add('show-item');
                 })
 
             }else if(category === 'appetizer'){
@@ -276,7 +302,7 @@
                 })
                 
                 appetizerItem.forEach((item)=>{
-                    item.classList.add('show-item')
+                    item.classList.add('show-item');
                 })
 
             }else if(category === 'dessert'){
@@ -287,7 +313,7 @@
                 })
                 
                 dessertItem.forEach((item)=>{
-                    item.classList.add('show-item')
+                    item.classList.add('show-item');
                 })
 
             }else if(category === 'drinks'){
@@ -298,7 +324,7 @@
                 })
                 
                 drinksItem.forEach((item)=>{
-                    item.classList.add('show-item')
+                    item.classList.add('show-item');
                 })
             }
         }
