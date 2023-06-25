@@ -116,7 +116,7 @@
                 amt: price
             };
             order.push(custOrder);
-            createCList(name, price);
+            createCList(name, price, order.length-1);
             computeTotal();
             console.log("added " + JSON.stringify(custOrder));
             
@@ -126,7 +126,7 @@
             document.querySelector(`.${name.replace(/ /g, '_')}_box`).classList.add('product_ordered');
         }
 
-        function createCList(name,price,qty,img = '/images/p.jpg'){
+        function createCList(name,price,index,img = '/images/p.jpg'){
             const orderList = document.createElement('div');
             orderList.classList.add('order-list');
             orderBox.appendChild(orderList);
@@ -164,8 +164,15 @@
 
             const qtyCountBtnMinus = document.createElement('button');
             qtyCountBtnMinus.classList.add('qty-count-btn');
-            qtyCountBtnMinus.innerHTML = '-'
+            qtyCountBtnMinus.innerHTML = '-';
             qtyBox.appendChild(qtyCountBtnMinus);
+
+            qtyCountBtnMinus.addEventListener('click',()=>{
+                if(order[index].qty>1){
+                    order[index].qty--;
+                    qtyCountLbl.innerHTML=order[index].qty;
+                }
+            })
 
             const qtyCountLbl = document.createElement('span');
             qtyCountLbl.classList.add('qty-count-lbl');
@@ -174,8 +181,13 @@
 
             const qtyCountBtnAdd = document.createElement('button');
             qtyCountBtnAdd.classList.add('qty-count-btn');
-            qtyCountBtnAdd.innerHTML = '+'
+            qtyCountBtnAdd.innerHTML = '+';
             qtyBox.appendChild(qtyCountBtnAdd);
+            
+            qtyCountBtnAdd.addEventListener('click',()=>{
+                order[index].qty++;
+                qtyCountLbl.innerHTML=order[index].qty;
+            })
         }
 
         function placeOrder(){
