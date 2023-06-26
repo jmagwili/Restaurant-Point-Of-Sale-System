@@ -162,31 +162,38 @@
             qtyCountBox.classList.add('qty-count-box');
             qtyBox.appendChild(qtyCountBox);
 
+            const origPrice = order[index].amt;
+
             const qtyCountBtnMinus = document.createElement('button');
             qtyCountBtnMinus.classList.add('qty-count-btn');
             qtyCountBtnMinus.innerHTML = '-';
-            qtyBox.appendChild(qtyCountBtnMinus);
+            qtyCountBox.appendChild(qtyCountBtnMinus);
 
             qtyCountBtnMinus.addEventListener('click',()=>{
                 if(order[index].qty>1){
                     order[index].qty--;
+                    order[index].amt = order[index].qty * origPrice;
                     qtyCountLbl.innerHTML=order[index].qty;
+                    orderPrice.innerHTML = '₱ ' + order[index].amt;
                 }
             })
 
             const qtyCountLbl = document.createElement('span');
             qtyCountLbl.classList.add('qty-count-lbl');
             qtyCountLbl.innerHTML = '1';
-            qtyBox.appendChild(qtyCountLbl);
+            qtyCountBox.appendChild(qtyCountLbl);
 
             const qtyCountBtnAdd = document.createElement('button');
             qtyCountBtnAdd.classList.add('qty-count-btn');
             qtyCountBtnAdd.innerHTML = '+';
-            qtyBox.appendChild(qtyCountBtnAdd);
+            qtyCountBox.appendChild(qtyCountBtnAdd);
             
             qtyCountBtnAdd.addEventListener('click',()=>{
                 order[index].qty++;
+                order[index].amt = order[index].qty * origPrice;
                 qtyCountLbl.innerHTML=order[index].qty;
+                orderPrice.innerHTML = '₱ ' + order[index].amt;
+                
             })
         }
 

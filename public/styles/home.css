@@ -161,12 +161,49 @@ color:white;
 
 .qty-box{
     /* border: solid; */
-    width: 30%;
+    width: 27%;
     position: absolute;
     top: 0;
     right: 0;
     text-align: center;
     margin-top: 10px;
+    margin-right: 5px;
+}
+
+.qty-box h4{
+    font-size: 15px;
+    font-weight: 500;
+    text-transform: uppercase;
+    font-family: 'Quicksand';
+}
+
+.qty-box span{
+    font-size: 30px;
+    font-weight: 900;
+    font-family: 'Quicksand';
+}
+
+.qty-count-box{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: #FFF;
+    border-radius: 50%;
+}
+
+.qty-count-btn{
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    margin-top: 7px;
+    height: 27px;
+    width: 27px;
+    border-radius: 50%;
+    background-color: #B1CED4;
+    border: none;
+    font-size: 30px;
+    cursor: pointer;
+    /* display: none; */
 }
 
 .products{
