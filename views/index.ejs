@@ -175,6 +175,7 @@
                     order[index].amt = order[index].qty * origPrice;
                     qtyCountLbl.innerHTML=order[index].qty;
                     orderPrice.innerHTML = '₱ ' + order[index].amt;
+                    computeTotal();
                 }
             })
 
@@ -193,7 +194,7 @@
                 order[index].amt = order[index].qty * origPrice;
                 qtyCountLbl.innerHTML=order[index].qty;
                 orderPrice.innerHTML = '₱ ' + order[index].amt;
-                
+                computeTotal();
             })
         }
 

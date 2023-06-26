@@ -8,26 +8,30 @@ menuRoute.use(bodyParser.json())
 
 let menu
 
-function getMenu(){
-    try{
-        const query = 'SELECT * FROM products'
-        db.query(query, (err, results) => {
-            menu = results
-        })
-    }catch(e){
-        console.log(e)
+function getMenu() {
+    return new Promise((resolve, reject) => {
+      const query = 'SELECT * FROM products';
+      db.query(query, (err, results) => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(results);
+        }
+      });
+    });
+  }
+  
+  menuRoute.get('/', async (req, res) => {
+    try {
+      const menu = await getMenu();
+      res.render('index', { menu });
+    } catch (error) {
+      console.log(error);
+      res.render('index', { menu: [] }); // Render with an empty menu or handle the error accordingly
     }
-}
-
-menuRoute.get('/', async (req, res) => {
-    await getMenu()  
-    res.render('index', {menu})
-})
+  });
 
 menuRoute.post('/', (req, res) =>{
-    // console.log(req.body)
-    console.log('post request received')
-    
     let query = "INSERT INTO orders(order_details) VALUE ('"+ JSON.stringify(req.body) +"')"
     // let queryValues = ""
     // for(let i = 0; i <= req.body.length - 1; i++){
