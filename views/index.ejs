@@ -173,7 +173,7 @@
             qtyCountBox.appendChild(qtyCountBtnMinus);
 
             qtyCountBtnMinus.addEventListener('click',()=>{
-                let orderIndex = getOrderIndex(qtyCountBtnAdd.parentNode.parentNode.parentNode.classList[1].replace(/-order$/, "").replace(/_/g, " "))
+                let orderIndex = getOrderIndex(qtyCountBtnAdd.parentNode.parentNode.parentNode.classList[1].replace(/-order$/, "").replace(/_/g, " "));
                 
                 if(order[orderIndex].qty>1){
                     order[orderIndex].qty--;
@@ -196,7 +196,7 @@
             qtyCountBox.appendChild(qtyCountBtnAdd);
             
             qtyCountBtnAdd.addEventListener('click',()=>{
-                let orderIndex = getOrderIndex(qtyCountBtnAdd.parentNode.parentNode.parentNode.classList[1].replace(/-order$/, "").replace(/_/g, " "))
+                let orderIndex = getOrderIndex(qtyCountBtnAdd.parentNode.parentNode.parentNode.classList[1].replace(/-order$/, "").replace(/_/g, " "));
 
                 order[orderIndex].qty++;
                 order[orderIndex].amt = order[orderIndex].qty * origPrice;
@@ -207,15 +207,15 @@
                 getOrderIndex(qtyCountBtnAdd.parentNode.parentNode.parentNode.classList[1].replace(/-order$/, "").replace(/_/g, " "));
             })
 
-            const removeBtn = document.createElement('span');
+            const removeBtn = document.createElement('p');
             removeBtn.innerHTML = 'Remove';
             removeBtn.classList.add('remove-btn');
             qtyBox.appendChild(removeBtn);
 
             removeBtn.addEventListener('click',()=>{
-                let orderIndex = getOrderIndex(qtyCountBtnAdd.parentNode.parentNode.parentNode.classList[1].replace(/-order$/, "").replace(/_/g, " "))
+                let orderIndex = getOrderIndex(qtyCountBtnAdd.parentNode.parentNode.parentNode.classList[1].replace(/-order$/, "").replace(/_/g, " "));
                 
-                order.splice(orderIndex,1)
+                order.splice(orderIndex,1);
 
                 computeTotal();
                 
@@ -238,8 +238,8 @@
                     break;
                 }
             }
-            console.log(index, order)
-            return index
+            console.log(index, order);
+            return index;
         }
 
         function placeOrder(){
