@@ -196,6 +196,24 @@
                 orderPrice.innerHTML = '₱ ' + order[index].amt;
                 computeTotal();
             })
+
+            const removeBtn = document.createElement('span');
+            removeBtn.innerHTML = 'Remove';
+            removeBtn.classList.add('remove-btn')
+            qtyBox.appendChild(removeBtn);
+
+            removeBtn.addEventListener('click',()=>{
+                orderBox.removeChild(orderList);
+                order.splice(index,1);
+                computeTotal();
+                
+                document.querySelector(`.${name.replace(/ /g, '_')}_btn`).innerHTML = 'ADD';
+                document.querySelector(`.${name.replace(/ /g, '_')}_btn`).disabled = false;
+                document.querySelector(`.${name.replace(/ /g, '_')}_box`).classList.add('show_button');
+                document.querySelector(`.${name.replace(/ /g, '_')}_box`).classList.remove('product_ordered');
+                
+                console.log(order);
+            });
         }
 
         function placeOrder(){
