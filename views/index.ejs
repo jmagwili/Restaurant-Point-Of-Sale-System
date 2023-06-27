@@ -116,7 +116,7 @@
                 amt: price
             };
             order.push(custOrder);
-            createCList(name, price, order.length-1);
+            createCList(custOrder);
             computeTotal();
             console.log("added " + JSON.stringify(custOrder));
             
@@ -126,7 +126,9 @@
             document.querySelector(`.${name.replace(/ /g, '_')}_box`).classList.add('product_ordered');
         }
 
-        function createCList(name,price,index,img = '/images/p.jpg'){
+        function createCList(obj,img = '/images/p.jpg'){
+            let objIndex = order.findIndex(item => item === obj);
+                 
             const orderList = document.createElement('div');
             orderList.classList.add('order-list');
             orderBox.appendChild(orderList);
@@ -141,12 +143,12 @@
             orderList.appendChild(orderLbl);
 
             const orderItemName = document.createElement('span');
-            orderItemName.innerHTML = name;
+            orderItemName.innerHTML = obj.name;
             orderItemName.classList.add('order-item-name');
             orderLbl.appendChild(orderItemName);
 
             const orderPrice = document.createElement('span');
-            orderPrice.innerHTML = '₱ ' + price;
+            orderPrice.innerHTML = '₱ ' + obj.amt;
             orderPrice.classList.add('order-price');
             orderLbl.appendChild(orderPrice);
 
@@ -162,7 +164,7 @@
             qtyCountBox.classList.add('qty-count-box');
             qtyBox.appendChild(qtyCountBox);
 
-            const origPrice = order[index].amt;
+            const origPrice = order[objIndex].amt;
 
             const qtyCountBtnMinus = document.createElement('button');
             qtyCountBtnMinus.classList.add('qty-count-btn');
@@ -170,12 +172,13 @@
             qtyCountBox.appendChild(qtyCountBtnMinus);
 
             qtyCountBtnMinus.addEventListener('click',()=>{
-                if(order[index].qty>1){
-                    order[index].qty--;
-                    order[index].amt = order[index].qty * origPrice;
-                    qtyCountLbl.innerHTML=order[index].qty;
-                    orderPrice.innerHTML = '₱ ' + order[index].amt;
+                if(order[objIndex].qty>1){
+                    order[objIndex].qty--;
+                    order[objIndex].amt = order[objIndex].qty * origPrice;
+                    qtyCountLbl.innerHTML=order[objIndex].qty;
+                    orderPrice.innerHTML = '₱ ' + order[objIndex].amt;
                     computeTotal();
+                    console.log(order)
                 }
             })
 
@@ -190,27 +193,29 @@
             qtyCountBox.appendChild(qtyCountBtnAdd);
             
             qtyCountBtnAdd.addEventListener('click',()=>{
-                order[index].qty++;
-                order[index].amt = order[index].qty * origPrice;
-                qtyCountLbl.innerHTML=order[index].qty;
-                orderPrice.innerHTML = '₱ ' + order[index].amt;
+                order[objIndex].qty++;
+                order[objIndex].amt = order[objIndex].qty * origPrice;
+                qtyCountLbl.innerHTML=order[objIndex].qty;
+                orderPrice.innerHTML = '₱ ' + order[objIndex].amt;
                 computeTotal();
             })
 
             const removeBtn = document.createElement('span');
             removeBtn.innerHTML = 'Remove';
-            removeBtn.classList.add('remove-btn')
+            removeBtn.classList.add('remove-btn');
             qtyBox.appendChild(removeBtn);
 
             removeBtn.addEventListener('click',()=>{
-                orderBox.removeChild(orderList);
-                order.splice(index,1);
-                computeTotal();
+                order.splice(objIndex,1)
+
+                // computeTotal();
                 
-                document.querySelector(`.${name.replace(/ /g, '_')}_btn`).innerHTML = 'ADD';
-                document.querySelector(`.${name.replace(/ /g, '_')}_btn`).disabled = false;
-                document.querySelector(`.${name.replace(/ /g, '_')}_box`).classList.add('show_button');
-                document.querySelector(`.${name.replace(/ /g, '_')}_box`).classList.remove('product_ordered');
+                orderBox.removeChild(orderList);
+
+                document.querySelector(`.${obj.name.replace(/ /g, '_')}_btn`).innerHTML = 'ADD';
+                document.querySelector(`.${obj.name.replace(/ /g, '_')}_btn`).disabled = false;
+                document.querySelector(`.${obj.name.replace(/ /g, '_')}_box`).classList.add('show_button');
+                document.querySelector(`.${obj.name.replace(/ /g, '_')}_box`).classList.remove('product_ordered');
                 
                 console.log(order);
             });
