@@ -131,6 +131,7 @@
                  
             const orderList = document.createElement('div');
             orderList.classList.add('order-list');
+            orderList.classList.add(`${obj.name.replace(/ /g, '_').replace(/["]/g, '')}-order`);
             orderBox.appendChild(orderList);
 
             const orderImg = document.createElement('img');
@@ -172,11 +173,13 @@
             qtyCountBox.appendChild(qtyCountBtnMinus);
 
             qtyCountBtnMinus.addEventListener('click',()=>{
-                if(order[objIndex].qty>1){
-                    order[objIndex].qty--;
-                    order[objIndex].amt = order[objIndex].qty * origPrice;
-                    qtyCountLbl.innerHTML=order[objIndex].qty;
-                    orderPrice.innerHTML = '₱ ' + order[objIndex].amt;
+                let orderIndex = getOrderIndex(qtyCountBtnAdd.parentNode.parentNode.parentNode.classList[1].replace(/-order$/, "").replace(/_/g, " "))
+                
+                if(order[orderIndex].qty>1){
+                    order[orderIndex].qty--;
+                    order[orderIndex].amt = order[orderIndex].qty * origPrice;
+                    qtyCountLbl.innerHTML=order[orderIndex].qty;
+                    orderPrice.innerHTML = '₱ ' + order[orderIndex].amt;
                     computeTotal();
                     console.log(order)
                 }
@@ -193,11 +196,15 @@
             qtyCountBox.appendChild(qtyCountBtnAdd);
             
             qtyCountBtnAdd.addEventListener('click',()=>{
-                order[objIndex].qty++;
-                order[objIndex].amt = order[objIndex].qty * origPrice;
-                qtyCountLbl.innerHTML=order[objIndex].qty;
-                orderPrice.innerHTML = '₱ ' + order[objIndex].amt;
+                let orderIndex = getOrderIndex(qtyCountBtnAdd.parentNode.parentNode.parentNode.classList[1].replace(/-order$/, "").replace(/_/g, " "))
+
+                order[orderIndex].qty++;
+                order[orderIndex].amt = order[orderIndex].qty * origPrice;
+                qtyCountLbl.innerHTML=order[orderIndex].qty;
+                orderPrice.innerHTML = '₱ ' + order[orderIndex].amt;
                 computeTotal();
+
+                getOrderIndex(qtyCountBtnAdd.parentNode.parentNode.parentNode.classList[1].replace(/-order$/, "").replace(/_/g, " "));
             })
 
             const removeBtn = document.createElement('span');
@@ -206,9 +213,11 @@
             qtyBox.appendChild(removeBtn);
 
             removeBtn.addEventListener('click',()=>{
-                order.splice(objIndex,1)
+                let orderIndex = getOrderIndex(qtyCountBtnAdd.parentNode.parentNode.parentNode.classList[1].replace(/-order$/, "").replace(/_/g, " "))
+                
+                order.splice(orderIndex,1)
 
-                // computeTotal();
+                computeTotal();
                 
                 orderBox.removeChild(orderList);
 
@@ -219,6 +228,18 @@
                 
                 console.log(order);
             });
+        }
+
+        function getOrderIndex(item){
+            let index = -1;
+            for(let i=0;i<=order.length-1;i++){
+                if(order[i].name === item){
+                    index = i;
+                    break;
+                }
+            }
+            console.log(index, order)
+            return index
         }
 
         function placeOrder(){
@@ -256,7 +277,7 @@
             let subtotal = 0;
             let scAmt = 0.0;
             
-            for(let i = 0; i < orderBox.children.length; i++){
+            for(let i = 0; i < order.length; i++){
                 subtotal += order[i].amt;
             }
 
