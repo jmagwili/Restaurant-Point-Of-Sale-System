@@ -383,7 +383,7 @@ color:white;
     transition: transform 0.3s ease-out, -webkit-transform 0.3s ease-out;
     display: inline-block;
     vertical-align: middle;
-    width: 600px;
+    width: 500px;
     margin: 30px auto;
     max-width: 97%;
   }
@@ -470,11 +470,25 @@ color:white;
     margin-bottom: 40px;
 }
 
+.pop-up-content-wrap form button{
+    background-color: #B1CED4;
+    height: 40px;
+    width: 100%;
+    border: none;
+    font-size: 15px;
+    text-transform: uppercase;
+    border-radius: 15px;
+    margin: 20px auto;
+}
+
 #payment-form{
     line-height: 30px;
+    width: auto;
+    /* border: solid; */
 }
 
 #payment-form input{
+    /* display: block; */
     margin: 0;
     width: 100%;
 }

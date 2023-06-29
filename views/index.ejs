@@ -293,26 +293,30 @@
         function processPymnt(){
             const custPayment = parseInt(document.getElementById('custPayment').value);
             
-            if(custPayment < total){
+            if(order.length > 0){
+                if(custPayment < total){
                 window.alert('Insufficient Payment');
+                }else{
+                    fetch('http://localhost:3000/menu', {
+                    method: "POST",
+                    body: JSON.stringify(order),
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    credentials: "same-origin"
+                    }).then(function(response) {
+                        if(response.redirected){
+                            window.alert('Order unsuccessful. Please log-in to continue.');
+                        }
+                        
+                        return response;
+                    },function(error) {
+                        console.log(error.message);
+                    })
+                    resetOrder();
+                }
             }else{
-                fetch('http://localhost:3000/menu', {
-                method: "POST",
-                body: JSON.stringify(order),
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                credentials: "same-origin"
-                }).then(function(response) {
-                    if(response.redirected){
-                        window.alert('Order unsuccessful. Please log-in to continue.');
-                    }
-                    
-                    return response;
-                },function(error) {
-                    console.log(error.message);
-                })
-                resetOrder();
+                window.alert('No items added')
             }
         }
     </script>
