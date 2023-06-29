@@ -2,18 +2,19 @@ const express = require('express')
 const db = require('../database')
 const userAccessRoute = express.Router()
 
-let usersData
 let userSearch
 
 function getUserData(){
-    try{
-        db.query("SELECT * FROM users", (err, results) => {
-            // console.log(results)
-            usersData = results    
-        })
-    }catch(err){
-        console.log(err)
-    }
+    return new Promise((resolve, reject) => {
+        const query = "SELECT * FROM users";
+        db.query(query, (err, results) => {
+          if(err){
+            reject(err);
+          }else{
+            resolve(results);
+          }
+        });
+      }); 
 }
 
 function searchUser(userID){
@@ -27,9 +28,14 @@ function searchUser(userID){
     }
 }
 
-userAccessRoute.get('/', (req,res) => {
-    getUserData()
-    res.render('test', {usersData})
+userAccessRoute.get('/', async (req,res) => {
+    try{
+        const usersData = await getUserData()
+        res.render('test', {usersData})
+    }catch(err){
+        console.log(err)
+    }
+    
 })
 
 userAccessRoute.post('/', (req,res) => {
