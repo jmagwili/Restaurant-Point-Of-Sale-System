@@ -3,6 +3,7 @@ const session = require('express-session');
 const menuRoute = require('./controllers/menu')
 const orderRoute = require('./controllers/orders')
 const userAccessRoute = require('./controllers/user_access')
+const inventoryRoute = require('./controllers/inventory')
 const db = require('./database')
 const bodyParser = require('body-parser')
 const app = express()
@@ -37,6 +38,7 @@ module.exports.checkAuthentication = (req, res, next) => {
 app.use('/menu' ,menuRoute)
 app.use('/orders', orderRoute)
 app.use('/user-access', userAccessRoute)
+app.use('/inventory',inventoryRoute)
 
 app.get('/',(req, res) => {
     req.session.destroy()
