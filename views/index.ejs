@@ -71,19 +71,13 @@
     <!--Products Container-->
     <div id="prod-list" class="prod-list">
         <% menu.forEach((item) => { %> 
-            <div class=
-            "products show_button  
-            <%= JSON.stringify(item.prod_name).replace(/ /g, '_').replace(/["]/g, '') %>_box 
-            <%= JSON.stringify(item.prod_category).replace(/["]/g, '') %>_item">
-            
-                <img src="/images/p.jpg" alt="">
-                
-                    <p><%= JSON.stringify(item.prod_name).toUpperCase().replace(/["]/g, '') %></p>
-                    <p class="prod-price">₱ <%= JSON.stringify(item.prod_price)%></p>
-                
-                <button onclick="addToOrder(<%= JSON.stringify(item.prod_name) %>,<%= item.prod_price %>)"
-                    class="<%= JSON.stringify(item.prod_name).replace(/ /g, '_').replace(/["]/g, '') %>_btn">ADD</button>
+            <div class="products show_button <%= JSON.stringify(item.prod_name).replace(/ /g, '_').replace(/["]/g, '') %>_box <%= JSON.stringify(item.prod_category).replace(/["]/g, '') %>_item">
+                <img src=<%= item.prod_image_path %> alt="">
+                <p><%= JSON.stringify(item.prod_name).toUpperCase().replace(/["]/g, '') %></p>
+                <p class="prod-price">₱ <%= JSON.stringify(item.prod_price) %></p>
+                <button onclick="addToOrder(<%= JSON.stringify(item.prod_name) %>, <%= item.prod_price %>, <%= JSON.stringify(item.prod_image_path) %>)" class="<%= JSON.stringify(item.prod_name).replace(/ /g, '_').replace(/["]/g, '') %>_btn">ADD</button>
             </div>
+            
         <% }); %>
 
     </div>
@@ -108,7 +102,7 @@
         function handleForm(event) { event.preventDefault(); } 
         form.addEventListener('submit', handleForm);
 
-        function addToOrder(name, price=100){
+        function addToOrder(name, price=100, img){
             let custOrder = {
                 name: name,
                 qty: 1,
@@ -116,7 +110,7 @@
                 amt: price
             };
             order.push(custOrder);
-            createCList(custOrder);
+            createCList(custOrder,img);
             computeTotal();
             console.log("added " + JSON.stringify(custOrder));
             
@@ -181,7 +175,6 @@
                     qtyCountLbl.innerHTML=order[orderIndex].qty;
                     orderPrice.innerHTML = '₱ ' + order[orderIndex].amt;
                     computeTotal();
-                    console.log(order)
                 }
             })
 
@@ -203,8 +196,6 @@
                 qtyCountLbl.innerHTML=order[orderIndex].qty;
                 orderPrice.innerHTML = '₱ ' + order[orderIndex].amt;
                 computeTotal();
-
-                getOrderIndex(qtyCountBtnAdd.parentNode.parentNode.parentNode.classList[1].replace(/-order$/, "").replace(/_/g, " "));
             })
 
             const removeBtn = document.createElement('p');
@@ -225,8 +216,6 @@
                 document.querySelector(`.${obj.name.replace(/ /g, '_')}_btn`).disabled = false;
                 document.querySelector(`.${obj.name.replace(/ /g, '_')}_box`).classList.add('show_button');
                 document.querySelector(`.${obj.name.replace(/ /g, '_')}_box`).classList.remove('product_ordered');
-                
-                console.log(order);
             });
         }
 
@@ -238,12 +227,10 @@
                     break;
                 }
             }
-            console.log(index, order);
             return index;
         }
 
         function placeOrder(){
-            console.log(order);
             order = [];
             resetOrder();
         }
@@ -316,7 +303,7 @@
                     resetOrder();
                 }
             }else{
-                window.alert('No items added')
+                window.alert('No items added');
             }
         }
     </script>
@@ -336,7 +323,7 @@
                         li[j].classList.remove('selected-tab');
                     }
                 }
-                li[i].classList.add('selected-tab')
+                li[i].classList.add('selected-tab');
                 
                 if(li[i].classList.contains('main')){
                     displayMenu('main');

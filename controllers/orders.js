@@ -5,23 +5,27 @@ const orderRoute = express.Router()
 let orders
 
 function getOrders(){
-    try{
-        const query = 'SELECT * FROM orders'
+    return new Promise((resolve, reject) => {
+        const query = 'SELECT * FROM orders';
         db.query(query, (err, results) => {
-            orders = results
-        //     console.log(orders.length)
-        //    console.log(orders[0].order_details[0].name) 
-        })
-    }catch(e){
-        console.log(e)
-    }
+          if(err){
+            reject(err);
+          }else{
+            resolve(results);
+          }
+        });
+      });
 }
 
-orderRoute.get('/', (req, res) => {
-    getOrders()
-    // console.log(JSON.stringify(orders))
-    res.render('orders', {orders})
-})
+orderRoute.get('/', async (req, res) => {
+    try {
+        const orders = await getOrders()
+        res.render('orders', {orders})
+      } catch (err) {
+        console.log(err)
+        res.render('orders', {orders:[]})
+      }
+    });
 
 orderRoute.post('/cancel', (req,res)=>{
     console.log('Delete request received')

@@ -25,20 +25,19 @@ app.use(
     })
 );
 
-module.exports.checkAuthentication = (req, res, next) => {
-    // Check if user is authenticated
-    if (req.session.isAuthenticated) {
-      // User is authenticated, proceed to the dashboard
-      return next();
-    }
-    res.redirect('/');
-}
-
 //routes
 app.use('/menu' ,menuRoute)
 app.use('/orders', orderRoute)
 app.use('/user-access', userAccessRoute)
 app.use('/inventory',inventoryRoute)
+
+//authenticator
+module.exports.checkAuthentication = (req, res, next) => {
+    if (req.session.isAuthenticated) {
+      return next()
+    }
+    res.redirect('/')
+}
 
 app.get('/',(req, res) => {
     req.session.destroy()
