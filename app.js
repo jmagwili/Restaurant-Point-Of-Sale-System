@@ -25,12 +25,6 @@ app.use(
     })
 );
 
-//routes
-app.use('/menu' ,menuRoute)
-app.use('/orders', orderRoute)
-app.use('/user-access', userAccessRoute)
-app.use('/inventory',inventoryRoute)
-
 //authenticator
 module.exports.checkAuthentication = (req, res, next) => {
     if (req.session.isAuthenticated) {
@@ -38,6 +32,12 @@ module.exports.checkAuthentication = (req, res, next) => {
     }
     res.redirect('/')
 }
+
+//routes
+app.use('/menu',this.checkAuthentication ,menuRoute)
+app.use('/orders',this.checkAuthentication ,orderRoute)
+app.use('/user-access',this.checkAuthentication ,userAccessRoute)
+app.use('/inventory',this.checkAuthentication,inventoryRoute)
 
 app.get('/',(req, res) => {
     req.session.destroy()
