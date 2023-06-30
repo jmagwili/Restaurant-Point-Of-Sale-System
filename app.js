@@ -39,6 +39,18 @@ app.use('/orders',this.checkAuthentication ,orderRoute)
 app.use('/user-access',this.checkAuthentication ,userAccessRoute)
 app.use('/inventory',this.checkAuthentication,inventoryRoute)
 
+module.exports.getAccess = (username)=>{
+    return new Promise((resolve, reject)=>{
+        db.query('select * from users where user_id = '+username, (err,results)=>{
+            if(err){
+                reject(err)
+            }else{
+                resolve(results)
+            }
+        })
+    })
+}
+
 app.get('/',(req, res) => {
     req.session.destroy()
     res.render('Login')

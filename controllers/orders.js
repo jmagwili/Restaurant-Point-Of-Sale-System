@@ -2,8 +2,6 @@ const express = require('express')
 const db = require('../database')
 const orderRoute = express.Router()
 
-let orders
-
 function getOrders(){
     return new Promise((resolve, reject) => {
         const query = 'SELECT * FROM orders';

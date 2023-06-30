@@ -41,12 +41,15 @@ header{
 .logo{
     display: flex;
     height: 40px;
-    width: 40px;
-    border-radius: 50%;
-    background-color: darkgray;
+    width: auto;
     margin-left: 20px;
     cursor: pointer;
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
+    font-weight: 700;
 }
+
 
 .search{
     width: 300px;
