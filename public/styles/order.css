@@ -1,10 +1,5 @@
 /* @import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
-*{
-    margin: 0;
-    padding: 0;
-    background-color:white;
-    font-family: 'Quicksand';
-}
+
 
 header{
     display: flex;
@@ -98,6 +93,10 @@ ion-icon:hover{
     color:  rgb(83, 141, 83);
     cursor: pointer;
 } */
+
+*{
+    font-family: 'Quicksand';
+}
 
 .orders-tab ion-icon{
     color: #2E636E;

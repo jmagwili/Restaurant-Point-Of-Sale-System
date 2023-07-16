@@ -128,7 +128,7 @@ ion-icon:hover{
 }
 
 .topbox th{
-    background-color: rgb(173, 173, 245);
+    background-color: #8BB5BE;
     height: 50px;
 }
 
@@ -144,7 +144,7 @@ ion-icon:hover{
 
 button{
     height: 40px;
-    width: 80%;
+    width: 100px;
     border-radius: 10px;
     border: none;
     font-size: 1em;
@@ -152,7 +152,7 @@ button{
     margin-bottom: 5px;
     margin-top: 10px;
     cursor: pointer;
-    background-color: rgb(224, 223, 223);
+    background-color: #D8E6E9;
 }
 
 .custom-model-main {
